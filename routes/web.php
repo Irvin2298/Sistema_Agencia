@@ -13,6 +13,7 @@ use App\Http\Controllers\InscripcionController;
 use App\Http\Controllers\CalificacionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\DocumentoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,6 +53,8 @@ Route::post('inscripcion/eliminar/{id}',[InscripcionController::class, 'eliminar
 
 Route::post('mark-as-read',[AgendaController::class, 'markNotificacion'])->name('markNotificacion');
 
+Route::post('documentos/recibo-generado',[DocumentoController::class, 'crearRecibo'])->name('documentos.crearRecibo');
+
 // Route::post('/mark-as-read', 'AgendaController@markNotificacion')->name('markNotificacion');
 
 Route::get('inscribir/{ciudadano}', [App\Http\Controllers\InscripcionController::class, 'inscribir'])->name('inscribir');
@@ -75,6 +78,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('calificacion', CalificacionController::class);
     Route::resource('post', PostController::class);
     Route::resource('grupos', GrupoController::class);
+    Route::resource('documentos', DocumentoController::class);
 });
 
 //Ruta para marcar una notificacion como leída

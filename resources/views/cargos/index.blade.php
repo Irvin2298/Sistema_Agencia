@@ -35,7 +35,7 @@
                                                 <!-- Puedes agregar más opciones según tus necesidades -->
 
                                                 <button type="submit" class="btn btn-outline-danger btn-md" name="reset_filtro" title="Eliminar filtros">
-                                                    <i class="fa fa-trash" aria-hidden="true"></i> Borrar Filtros
+                                                    <i class="fa fa-trash" aria-hidden="true"></i> Quitar Filtros
                                                 </button>
                                             </div>
                                         </div>

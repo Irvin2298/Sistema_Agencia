@@ -108,6 +108,7 @@
 <script src="{{ asset('js/main.js') }}"></script>
 <script src="{{ asset('js/fullcalendar.min.js') }}"></script>
 
+
 @yield('page_js')
 @yield('scripts')
 

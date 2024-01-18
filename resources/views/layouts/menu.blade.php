@@ -15,11 +15,11 @@
     </a>
     @endcan
 
-    @can('ver-blog')
+    <!-- @can('ver-blog')
     <a class="nav-link" href="/blogs">
         <i class=" fas fa-blog"></i><span>Blogs</span>
     </a>
-    @endcan
+    @endcan -->
 
     <a class="nav-link" href="/agenda">
         <i class=" fas fa-calendar-minus-o fa-lg"></i><span>Agenda</span>
@@ -33,7 +33,7 @@
 
     @can('ver-cargo')
     <a class="nav-link" href="/cargos">
-        <i class=" fas fa-university fa-lg"></i><span>Cargos</span>
+        <i class="fas fa-address-card""></i><span>Cargos</span>
     </a>
     @endcan
 
@@ -54,4 +54,8 @@
     <a class="nav-link" href="/post">
         <i class="fas fa-envelope"></i><span>Notificaciones</span>
     </a>
+    <a class="nav-link" href="/documentos">
+        <i class="fas fa-folder-open"></i><span>Documentos</span>
+    </a>
 </li>
+

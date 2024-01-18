@@ -23,11 +23,11 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="filtroDropdown">
                                             <button type="submit" class="dropdown-item {{ request('filtro') === 'filtro1' ? 'active' : '' }}" name="filtro" value="filtro1"  title="Aplicar filtro">Aprobado</button>
-                                            <button type="submit" class="dropdown-item {{ request('filtro') === 'filtro2' ? 'active' : '' }}" name="filtro" value="filtro2"  title="Aplicar filtro">No aprovado</button>
+                                            <button type="submit" class="dropdown-item {{ request('filtro') === 'filtro2' ? 'active' : '' }}" name="filtro" value="filtro2"  title="Aplicar filtro">No aprobado</button>
                                             <!-- Puedes agregar más opciones según tus necesidades -->
 
                                             <button type="submit" class="btn btn-outline-danger btn-md" name="reset_filtro"  title="Eliminar filtros">
-                                                <i class="fa fa-trash" aria-hidden="true" ></i> Borrar Filtros
+                                                <i class="fa fa-trash" aria-hidden="true" ></i> Quitar Filtros
                                             </button>
 
                                         </div>
@@ -69,7 +69,8 @@
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal-{{ $inscripcion->idd }}" title="Calificar ciudadano"><i class="fa fa-pencil" aria-hidden="true"></i> Evaluar</a>
 
                                             @if ($inscripcion->apro == 1)
-                                                 <a class="btn btn-secondary" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Descargar constancia</a>
+                                                 <!-- <a class="btn btn-secondary" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Descargar constancia</a> -->
+                                                 <a class="btn btn-danger" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
                                             @endif
                                         </td>
                                     </tr>

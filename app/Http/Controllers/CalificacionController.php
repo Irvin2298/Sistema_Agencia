@@ -51,6 +51,8 @@ class CalificacionController extends Controller
 
         return view('calificaciones.index', compact('inscripciones'));
     }
+    $inscripciones = $query->get();
+    return view('calificaciones.index', compact('inscripciones'));
 }
 
     /**

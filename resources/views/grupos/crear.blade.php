@@ -94,13 +94,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fecha_inicio">Fecha de inicio:<span class="required text-danger">*</span></label>
-                                    <input type="date" name="fecha_inicio" class="form-control" required>
+                                    <input type="date" name="fecha_inicio" class="form-control" min="{{ \Carbon\Carbon::today()->format('Y-m-d') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fecha_fin">Fecha fin:<span class="required text-danger">*</span></label>
-                                    <input type="date" name="fecha_fin" class="form-control" required>
+                                    <input type="date" name="fecha_fin" class="form-control"  min="{{ \Carbon\Carbon::today()->addDays(3)->format('Y-m-d') }}" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -109,17 +109,6 @@
                                     <label type="text" class="form-control" disabled>{{$cargo->nombre}}</label>
                                 </div>
                             </div>
-                            {{-- <div class="col-md-4">
-                                <div class="form-group">
-                                    <label for="cargo_id">Cargo: </label><span class="required text-danger">*</span>
-                                    <select name="cargo_id" class="form-control custom-select" required>
-                                        <option disabled selected value="">Selecciona cargo</option>
-                                        @foreach(\App\Models\Cargo::where('estado', 1)->get() as $cargo)
-                                            <option value="{{$cargo->id}}">{{ $cargo->nombre }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div> --}}
                             <div class="col-md-12">
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
@@ -143,8 +132,8 @@
 <script>
     new DataTable('#miTabla2', {
         lengthMenu: [
-            [3, 5, 15],
-            [3, 5, 15]
+            [7, 10, 15],
+            [7, 10, 15]
         ],
 
         columns: [

@@ -32,7 +32,7 @@
                 <div class="dropdown-divider"> </div>
                 <span class="dropdown-header">Notificacion leidas</span>
                 @forelse (auth()->user()->readNotifications->take(3 ) as $notificacion)
-                    <a class="dropdown-item has-icon" href="#" >
+                    <a class="dropdown-item has-icon" href="{{route('post.index')}}">
                         <i class="fas fa-envelope mr-2"></i> {{$notificacion->data['nombre']}}
                     </a>
                     @empty

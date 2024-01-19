@@ -59,16 +59,8 @@
                                   <tr>
                                     <td style="display: none;">{{ $cargo->id }}</td>
                                     <td>{{ ucwords( $cargo->nombre) }}</td>
-                                    {{-- <td>{{ ucwords($cargo->fecha_inicio)}}</td>
-                                    @php
-                                        \Carbon\Carbon::setlocale(LC_TIME, 'es_ES.utf8');
-                                     @endphp
-
-                                    <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $cargo->fecha_fin)->formatLocalized('%d de %B de %Y') }}</td> --}}
 
                                     <td>
-                                        {{-- <div class="form-check">
-                                            <input type="checkbox" disabled {{ $cargo->estado == 1 ? 'checked' : '' }} class="form-check-input"> --}}
                                             <label class="form-check-label">
                                                 @if ($cargo->estado == 1)
                                                     <span class="badge badge-success">Activo</span>
@@ -76,7 +68,7 @@
                                                     <span class="badge badge-danger">No activo</span>
                                                 @endif
                                             </label>
-                                        {{-- </div> --}}
+
                                     </td>
 
                                     <td>
@@ -131,8 +123,8 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [3, 5, 15],
-        [3, 5, 15]
+        [8, 10, 15],
+        [8, 10, 15]
     ],
 
     columns: [

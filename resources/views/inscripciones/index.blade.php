@@ -43,8 +43,7 @@
                                                     {{ ucwords($fechaRestante->days . ' días') }}
                                             @endif
                                         </td>
-                                        <td class="text-center">
-                                            <!-- <form action="{{ route('inscripcion.destroy', $inscripcion->idd) }}" method="POST" id="frmDatos"> -->
+                                        <td class="text-left">
                                                 @csrf
                                                 @method('DELETE')
                                                @php
@@ -66,8 +65,6 @@
                                                         <i class="fa fa-trash" aria-hidden="true"></i> Borrar
                                                     </button>
                                                 @endcan
-
-                                            <!-- </form> -->
                                         </td>
                                     </tr>
                                 @endforeach

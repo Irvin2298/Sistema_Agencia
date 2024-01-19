@@ -54,7 +54,7 @@
                                   <th style="color:#fff; cursor: pointer;">Nombre <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Apellido Paterno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Apellido Materno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">CURP  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">Curp  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Estado <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff;">Sexo</th>
                                   <th style="color:#fff;" class="text-center">Acciones</th>
@@ -121,8 +121,8 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [3, 5, 15],
-        [3, 5, 15]
+        [8, 10, 15],
+        [8, 10, 15]
     ],
 
     columns: [

@@ -69,8 +69,7 @@
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal-{{ $inscripcion->idd }}" title="Calificar ciudadano"><i class="fa fa-pencil" aria-hidden="true"></i> Evaluar</a>
 
                                             @if ($inscripcion->apro == 1)
-                                                 <!-- <a class="btn btn-secondary" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>  Descargar constancia</a> -->
-                                                 <a class="btn btn-danger" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i></a>
+                                                 <a class="btn btn-danger" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Descargar</a>
                                             @endif
                                         </td>
                                     </tr>

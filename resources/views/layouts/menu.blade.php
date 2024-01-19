@@ -55,7 +55,7 @@
         <i class="fas fa-envelope"></i><span>Notificaciones</span>
     </a>
     <a class="nav-link" href="/documentos">
-        <i class="fas fa-folder-open"></i><span>Documentos</span>
+        <i class="fas fa-folder-open"></i><span>Documentos </span>
     </a>
 </li>
 

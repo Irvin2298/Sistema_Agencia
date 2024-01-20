@@ -25,9 +25,11 @@ class DocumentoController extends Controller
 
     public function crearRecibo(Request $request)
     {
+        $data = ['key' => 'value'];
 
-        $pdf = Pdf::loadView('plantillas.recibo');
-        return $pdf->stream('prueba.pdf');
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.recibo', $data);
+        $pdf->set_option('defaultFont', 'Arial');
+    return $pdf->stream('invoice.pdf');
         
 
         // $pdf = PDF::loadView('plantillas.recibo');

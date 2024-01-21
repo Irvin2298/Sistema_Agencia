@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         <div id="contenidoRecibo"> 
-                        <form action="{{ route('documentos.crearRecibo') }}" method="post">
+                        <form action="{{ route('documentos.crearRecibo') }}" method="post"  target="_blank">
                             @csrf
                             <!-- Datos para generar el recibo -->
                             

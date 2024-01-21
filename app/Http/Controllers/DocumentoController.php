@@ -23,13 +23,44 @@ class DocumentoController extends Controller
         return view('documentos.index');
     }
 
+    private function formatoFecha($fecha){
+        $fecha = substr($fecha, 0, 10);
+        $numeroDia = date('d', strtotime($fecha));
+        $dia = date('l', strtotime($fecha));
+        $mes = date('F', strtotime($fecha));
+        $anio = date('Y', strtotime($fecha));
+        $dias_ES = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
+        $dias_EN = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        $nombredia = str_replace($dias_EN, $dias_ES, $dia);
+        // $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        $meses_ES = array("ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOBIEMBRE", "DICIEMBRE");
+        $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
+        return $numeroDia." DE ".$nombreMes." DEL ".$anio;
+    }
+
     public function crearRecibo(Request $request)
     {
-        $data = ['key' => 'value'];
+        $nombre = $request->input('nombre');
+        $apellido_p = $request->input('apellido_p');
+        $apellido_m = $request->input('apellido_m');
+        $cantidad_numero = $request->input('cantidad_numero');
+        $cantidad_letra = $request->input('cantidad_letra');
+        $fecha_recibo = $request->input('fecha_recibo');
+        $fecha_recibo = $this->formatoFecha($fecha_recibo);
+        $concepto_recibo = $request->input('concepto_recibo');
+        $nom = $nombre ." ". $apellido_p. " "  .$apellido_m;
+
+        
+        $data = ['nombre' => $nom,
+                 'cantidad_num' => $cantidad_numero,
+                 'cantidad_let' => $cantidad_letra,
+                 'fecha' => $fecha_recibo,
+                 'concepto' => $concepto_recibo,];
 
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.recibo', $data);
         $pdf->set_option('defaultFont', 'Arial');
-    return $pdf->stream('invoice.pdf');
+    return $pdf->stream('Recibo de '. $nom .' ('. $fecha_recibo . ').pdf');
         
 
         // $pdf = PDF::loadView('plantillas.recibo');

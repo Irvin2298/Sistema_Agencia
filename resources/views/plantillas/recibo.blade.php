@@ -52,16 +52,16 @@ height: 2cm;
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
 <main>
     <br>
-    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{ "fecha" }}.</>
+    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha}}.</>
     <br>
     <br>
-    <h4 ALIGN=RIGHT>BUENO POR $cantidad.00</>
+    <h4 ALIGN=RIGHT>BUENO POR {{$cantidad_num}}.00</>
     <br>
     <br>
     <h4><center>RECIBO</center></>
     <br>
-    <p  ALIGN=JUSTIFY>Recibí de la Agencia Municipal de Santo Domingo Tlaltinango, Santiago Suchilquitongo, Etla, Oaxaca, la cantidad de $cantidad.00 (cantidadLetra pesos 00/100 MN)
-         por concepto de concepto
+    <p  ALIGN=JUSTIFY>Recibí de la Agencia Municipal de Santo Domingo Tlaltinango, Santiago Suchilquitongo, Etla, Oaxaca, la cantidad de {{$cantidad_num}}.00 ({{$cantidad_let}} pesos 00/100 MN)
+         por concepto de {{$concepto}}.
     </p>
     <br>
     <h4><center>RECIBÍ</center></>
@@ -69,7 +69,7 @@ height: 2cm;
     <br>
     <p><center>________________________</center></p>
     <!-- <br> -->
-    <h4><center>nombre</center></>
+    <h4><center>{{$nombre}}</center></>
 
 
 </main>

@@ -77,7 +77,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group nf-date">
                                         <label for="fecha_recibo">Fecha: <span class="required text-danger">*</span></label>
-                                        <input required type="date" name="fecha_recibo" class="form-control">
+                                        <input required type="date" name="fecha_recibo" max="{{ now()->format('Y-m-d') }}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-4">

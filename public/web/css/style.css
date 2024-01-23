@@ -4205,7 +4205,4 @@ a {
         -moz-box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.14) !important;
         box-shadow: 0px 5px 13px 0px rgba(0, 0, 0, 0.14) !important; }
 
-        #contenidoRecibo {
-            display: none; /* Inicialmente oculto */
-            margin-top: 20px;
-        }
+        

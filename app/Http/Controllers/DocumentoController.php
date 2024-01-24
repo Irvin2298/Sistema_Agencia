@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ciudadano;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use PDF;
 // use App\Models\Cargo;
+use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
@@ -51,7 +53,7 @@ class DocumentoController extends Controller
         $concepto_recibo = $request->input('concepto_recibo');
         $nom = $nombre ." ". $apellido_p. " "  .$apellido_m;
 
-        
+
         $data = ['nombre' => $nom,
                  'cantidad_num' => $cantidad_numero,
                  'cantidad_let' => $cantidad_letra,
@@ -61,13 +63,87 @@ class DocumentoController extends Controller
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.recibo', $data);
         $pdf->set_option('defaultFont', 'Arial');
     return $pdf->stream('Recibo de '. $nom .' ('. $fecha_recibo . ').pdf');
-        
+
 
         // $pdf = PDF::loadView('plantillas.recibo');
         // $pdf->loadHTML('<h1>Test</h1>');
         // return $pdf->stream();
         //return view('plantillas.recibo');
     }
+
+    public function crearCitatorio(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $fecha_c = $request->input('fecha_citatorio');
+        $fecha=$this->convertirFecha($fecha_c);
+        $hora = $request->input('hora');
+
+        $now=$this->convertirFecha(Carbon::now()->format('d-m-Y'));
+
+        $rolEspecifico = 'Agente Municipal';
+        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
+                        $query->where('name', $rolEspecifico);
+                        })->first();
+
+        $data = ['nombre' => $nombre,
+                'fecha_c'=>$fecha,
+                'hora' => $hora,
+                'hoy' => $now,
+                'agente' => $agente->name];
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.citatorio', $data);
+        $pdf->set_option('defaultFont', 'Arial');
+        return $pdf->stream('Recibo de '. $nombre .' ('. $fecha_c . ').pdf');
+    }
+
+    public function convertirFecha($fecha) {
+        $fechaCarbon = Carbon::parse($fecha);
+        $dia = $fechaCarbon->format('d');
+        $mes = '';
+        switch ($fechaCarbon->format('m')) {
+            case 1:
+                $mes = 'enero';
+                break;
+            case 2:
+                $mes = 'febrero';
+                break;
+            case 3:
+                $mes = 'marzo';
+                break;
+            case 4:
+                $mes = 'abril';
+                break;
+            case 5:
+                $mes = 'mayo';
+                break;
+            case 6:
+                $mes = 'junio';
+                break;
+            case 7:
+                $mes = 'julio';
+                break;
+            case 8:
+                $mes = 'agosto';
+                break;
+            case 9:
+                $mes = 'septiembre';
+                break;
+            case 10:
+                $mes = 'octubre';
+                break;
+            case 11:
+                $mes = 'noviembre';
+                break;
+            case 12:
+                $mes = 'diciembre';
+                break;
+        }
+        $año = $fechaCarbon->format('Y');
+
+        // Devolver el texto formateado
+        return "$dia de $mes del $año";
+    }
+
 
 
     /**
@@ -77,7 +153,7 @@ class DocumentoController extends Controller
      */
     public function create()
     {
-        
+
     }
 
     /**
@@ -138,8 +214,8 @@ class DocumentoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Ciudadano $ciudadano)
-    {     
-        
+    {
+
     }
 
     /**

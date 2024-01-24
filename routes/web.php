@@ -54,6 +54,9 @@ Route::post('inscripcion/eliminar/{id}',[InscripcionController::class, 'eliminar
 Route::post('mark-as-read',[AgendaController::class, 'markNotificacion'])->name('markNotificacion');
 
 Route::post('documentos/recibo-generado',[DocumentoController::class, 'crearRecibo'])->name('documentos.crearRecibo');
+Route::post('documentos/citatorio-generado',[DocumentoController::class, 'crearCitatorio'])->name('documentos.crearCitatorio');
+
+Route::get('documentos/constancia/{idd}',[CalificacionController::class, 'crearConstancia'])->name('documentos.constancia');
 
 // Route::post('/mark-as-read', 'AgendaController@markNotificacion')->name('markNotificacion');
 

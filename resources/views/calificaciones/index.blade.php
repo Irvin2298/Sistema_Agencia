@@ -69,7 +69,10 @@
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal-{{ $inscripcion->idd }}" title="Calificar ciudadano"><i class="fa fa-pencil" aria-hidden="true"></i> Evaluar</a>
 
                                             @if ($inscripcion->apro == 1)
-                                                 <a class="btn btn-danger" href="#"><i class="fa fa-file-pdf-o" aria-hidden="true"></i> Descargar</a>
+
+                                                <a class="btn btn-danger" href="{{ route('documentos.constancia', $inscripcion->idd) }}" title="Descargar constancia" target="_blank">
+                                                    <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Descargar
+                                                </a>
                                             @endif
                                         </td>
                                     </tr>

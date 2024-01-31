@@ -1,6 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.appDocumentos')
 
 @section('content')
+
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Generar documento</h3>
@@ -27,7 +28,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="sexo">Selecciona el documento a generar: </label>
-                                        <select required name="documento" class="form-control selectpicker" data-live-search="true" id="documentos" onchange="cargarContenido()">
+                                        <select required name="documento" class="form-control selectpicker" data-live-search="true" id="documentos">
                                             <option disabled selected value="">Documentos</option>
                                             <option value="Recibo">Recibo</option>
                                             <option value="Nombramiento">Nombramiento</option>
@@ -141,12 +142,6 @@
                                                 <input required type="date" name="fecha_recibo" max="{{ now()->format('Y-m-d') }}" class="form-control">
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="concepto_recibo">Concepto: <span class="required text-danger">*</span></label>
-                                                <textarea class="form-control" id="concepto_recibo" name="concepto_recibo" style="height: 100px;" placeholder="Escribe el concepto del recibo"></textarea>
-                                            </div>
-                                        </div>
 
                                         <div class="col-md-12">
                                             <button type="submit" class="btn btn-primary" style="float: right;" target="_blank">Generar Recibo</button>
@@ -200,7 +195,7 @@
     </section>
 
 
-    <script>
+    <!-- <script>
         function cargarContenido() {
             var seleccion = document.getElementById("documentos").value;
             var contenidoDiv = document.getElementById("contenidoDiv");
@@ -222,8 +217,12 @@
                     contenidoDiv.innerHTML = ""; // Limpiar el contenido si no hay coincidencia
             }
         }
-    </script>
+    </script> -->
 
+
+@endsection
+
+@section('scripts')
 <script>
     $(document).ready(function () {
         $('.selectpicker').selectpicker();
@@ -244,3 +243,6 @@
     });
 </script>
 @endsection
+
+
+

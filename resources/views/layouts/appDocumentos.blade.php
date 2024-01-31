@@ -33,6 +33,13 @@
     <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
     <link href="{{ asset('css/post-it.css') }}" rel="stylesheet" type="text/css"/>
 
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+
+
 
 @yield('page_css')
 <!-- Template CSS -->
@@ -85,8 +92,9 @@
 @include('layouts.modalNotificacionInfo')
 </body>
 <!-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script> -->
-<script src ="{{ asset('js/jquery-3.0.0.min.js') }}"> </script>
+<!-- <script src ="{{ asset('js/jquery-3.0.0.min.js') }}"> </script> -->
 <!-- <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js') }}"></script> -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 
 <script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
@@ -134,6 +142,11 @@
 <script type="text/javascript" src="{{ asset('js/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/fullcalendar.min.js') }}"></script>
 <script src="{{ asset('locales/es.js') }}"></script>
+
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script> -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
 
 </html>

@@ -53,7 +53,7 @@ footer {
 
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
 <main>
-    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/logo3.png')) }}" width="110%" height="6%"/>
+    <img src="{{ public_path().'/img/logo3.png' }}" width="110%" height="6%"/>
     {{-- <br> --}}
     <h4 ALIGN=CENTER>CITATORIO.</h4>
     {{-- <br> --}}
@@ -72,7 +72,7 @@ footer {
     <p><center>______________________________</center></p>
     <h5><center>C. {{strtoupper($agente)}}</center></h5>
 
-    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/logo3.png')) }}" width="110%" height="6%"/>
+    <img src="data:image/png;base64,{{ public_path(). '/img/logo3.png' }}" width="110%" height="6%"/>
     {{-- <br> --}}
     <h4 ALIGN=CENTER>CITATORIO.</h4>
     {{-- <br> --}}

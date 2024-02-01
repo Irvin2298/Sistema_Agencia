@@ -60,7 +60,7 @@ class DocumentoController extends Controller
                  'fecha' => $fecha_recibo,
                  'concepto' => $concepto_recibo,];
 
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.recibo', $data);
+        $pdf = PDF::loadView('plantillas.recibo', $data);
         $pdf->set_option('defaultFont', 'Arial');
     return $pdf->stream('Recibo de '. $nom .' ('. $fecha_recibo . ').pdf');
 
@@ -91,7 +91,7 @@ class DocumentoController extends Controller
                 'hoy' => $now,
                 'agente' => $agente->name];
 
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.citatorio', $data);
+        $pdf = PDF::loadView('plantillas.citatorio', $data);
         $pdf->set_option('defaultFont', 'Arial');
         return $pdf->stream('Recibo de '. $nombre .' ('. $fecha_c . ').pdf');
     }

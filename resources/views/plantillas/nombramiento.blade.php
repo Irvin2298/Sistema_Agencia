@@ -50,15 +50,13 @@ height: 2cm;
 </footer>
 
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
-
-
 <main>
     <br>
     <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha_actual}}.</>
     <br>
     <h4 ALIGN=RIGHT>NOMBRAMIENTO</>
     <br>
-    <h4 ALIGN=LEFT>C. {{strtoupper($ciudadano)}} {{strtoupper($apellido_p)}} {{strtoupper($apellido_m)}}</>
+    <h4 ALIGN=LEFT>C. {{strtoupper($nombre)}} {{strtoupper($apellido_p)}} {{strtoupper($apellido_m)}}</>
     <br>
     <p  ALIGN=JUSTIFY>El que suscribe C. {{$agente}}, Agente Municipal, legalmente en funciones de la población de Santo Domingo Tlaltinango, 
         Municipio de Santiago Suchilquitongo, Etla, Oax., y con las facultades que nuestras leyes me confieren, me permito extender el siguiente nombramiento
@@ -77,8 +75,5 @@ height: 2cm;
     <p><center>________________________</center></p>
     <!-- <br> -->
     <h4><center>C. {{strtoupper($agente)}}</center></h5>
-
-
-</main>
 </body>
 </html>

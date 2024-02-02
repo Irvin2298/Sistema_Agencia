@@ -37,6 +37,8 @@
                                     </div>
                                 </div>
                             </div>
+
+
                         <div id="contenidoRecibo" class="opcionesDiv" style="display: none;">
                             <form action="{{ route('documentos.crearRecibo') }}" method="post"  target="_blank">
                                 @csrf
@@ -97,8 +99,10 @@
                             </form>
                         </div>
                             <!-- Terminan los datos para generar el recibo -->
+
+
                             <div id="contenidoNombramiento" class="opcionesDiv" style="display: none;">
-                                <form action="{{ route('documentos.crearRecibo') }}" method="post"  target="_blank">
+                                <form action="{{ route('documentos.crearNombramiento') }}" method="post"  target="_blank">
                                     @csrf
                                     <!-- Datos para generar el nombramiento -->
 
@@ -106,7 +110,7 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="nombre">Nombre nombraiento: </label><span class="required text-danger">*</span>
+                                                <label for="nombre">Nombre/s: </label><span class="required text-danger">*</span>
                                                 <input type="text" name="nombre" pattern="[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+" title="Solo se permiten letras y espacios" class="form-control" placeholder="Nombre/s" required>
                                             </div>
                                         </div>
@@ -125,26 +129,25 @@
                                         </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
-                                                <label for="cantidad_numero">Cantidad: </label><span class="required text-danger">*</span>
-                                                <input type="number" name="cantidad_numero"  title="Solo se permiten números" class="form-control" placeholder="Cantidad del recibo en número" required>
+                                                <label for="cargo">Cargo: </label><span class="required text-danger">*</span>
+                                                <input type="text" name="cargo" pattern="[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+"  title="Solo se permiten letras" class="form-control" placeholder="Apellido Materno" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="cantidad_letra">Cantidad: </label><span class="required text-danger">*</span>
-                                                <input type="text" name="cantidad_letra" pattern="[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+"  title="Solo se permiten letras" class="form-control" placeholder="Cantidad del recibo en letra" required>
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-4">
                                             <div class="form-group nf-date">
-                                                <label for="fecha_recibo">Fecha: <span class="required text-danger">*</span></label>
-                                                <input required type="date" name="fecha_recibo" max="{{ now()->format('Y-m-d') }}" class="form-control">
+                                                <label for="fecha_inicio">Fecha de inicio: <span class="required text-danger">*</span></label>
+                                                <input required type="date" name="fecha_inicio" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group nf-date">
+                                                <label for="fecha_final">Fecha de término: <span class="required text-danger">*</span></label>
+                                                <input required type="date" name="fecha_final" class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <button type="submit" class="btn btn-primary" style="float: right;" target="_blank">Generar Recibo</button>
+                                            <button type="submit" class="btn btn-primary" style="float: right;" target="_blank">Generar Nombramiento</button>
                                         </div>
                                     </div>
 
@@ -155,16 +158,8 @@
                                 <form action="{{ route('documentos.crearCitatorio') }}" method="post"  target="_blank">
                                     @csrf
                                     <!-- Datos para generar el citatorio -->
-
                                     <label class="text-danger">Los campos con * son obligatorios</label>
                                     <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label for="nombre">Nombre del Agente Municipal: </label><span class="required text-danger">*</span>
-                                                <input type="text" name="nombre" pattern="[A-Za-záéíóúüñÁÉÍÓÚÜÑ\s]+" title="Solo se permiten letras y espacios" class="form-control" placeholder="Agente" required>
-                                            </div>
-                                        </div>
-
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="fecha_citatorio">Fecha del citatorio: <span class="required text-danger">*</span></label>
@@ -193,32 +188,6 @@
             </div>
         </div>
     </section>
-
-
-    <!-- <script>
-        function cargarContenido() {
-            var seleccion = document.getElementById("documentos").value;
-            var contenidoDiv = document.getElementById("contenidoDiv");
-            var contenidoRecibo = document.getElementById("contenidoRecibo");
-
-
-            // Lógica para cargar el contenido en el div según la opción seleccionada
-            switch (seleccion) {
-                case "Recibo":
-                    contenidoRecibo.style.display = "block";
-                    break;
-                case "Nombramiento":
-                    contenidoNombramiento.style.display = "block";
-                    break;
-                case "Citatorio":
-                    contenidoCitatorio.style.display = "block"; break
-                    break;
-                default:
-                    contenidoDiv.innerHTML = ""; // Limpiar el contenido si no hay coincidencia
-            }
-        }
-    </script> -->
-
 
 @endsection
 

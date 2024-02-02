@@ -57,6 +57,7 @@ Route::post('documentos/recibo-generado',[DocumentoController::class, 'crearReci
 Route::post('documentos/citatorio-generado',[DocumentoController::class, 'crearCitatorio'])->name('documentos.crearCitatorio');
 
 Route::get('documentos/constancia/{idd}',[CalificacionController::class, 'crearConstancia'])->name('documentos.constancia');
+Route::post('documentos/nombramiento',[DocumentoController::class, 'crearNombramiento'])->name('documentos.crearNombramiento');
 
 // Route::post('/mark-as-read', 'AgendaController@markNotificacion')->name('markNotificacion');
 

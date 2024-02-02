@@ -73,7 +73,6 @@ class DocumentoController extends Controller
 
     public function crearCitatorio(Request $request)
     {
-        $nombre = $request->input('nombre');
         $fecha_c = $request->input('fecha_citatorio');
         $fecha=$this->convertirFecha($fecha_c);
         $hora = $request->input('hora');
@@ -85,15 +84,54 @@ class DocumentoController extends Controller
                         $query->where('name', $rolEspecifico);
                         })->first();
 
-        $data = ['nombre' => $nombre,
-                'fecha_c'=>$fecha,
+        $data = ['fecha_c'=>$fecha,
                 'hora' => $hora,
                 'hoy' => $now,
                 'agente' => $agente->name];
 
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.citatorio', $data);
         $pdf->set_option('defaultFont', 'Arial');
-        return $pdf->stream('Recibo de '. $nombre .' ('. $fecha_c . ').pdf');
+        return $pdf->stream('Citatorio con fecha del '.  $fecha . '.pdf');
+    }
+
+    public function crearNombramiento(Request $request)
+    {
+        $nombre = $request->input('nombre');
+        $apellido_p = $request->input('apellido_p');
+        $apellido_m = $request->input('apellido_m');
+        $cargo = $request->input('cargo');
+        $fecha_ini = $request->input('fecha_inicio');
+        $fecha_fin = $request->input('fecha_final');
+        $fecha=$this->obtenerFecha();
+        $fecha=$this->formatoFecha($fecha);
+
+        $rolEspecifico = 'Agente Municipal';
+        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
+                        $query->where('name', $rolEspecifico);
+                        })->first();
+
+        $data = ['nombre' => $nombre,
+                'apellido_p'=>$apellido_p,
+                'apellido_m'=>$apellido_m,
+                'cargo' => $cargo,
+                'fecha_ini' => $fecha_ini,
+                'fecha_fin' => $fecha_fin,
+                'fecha_actual' => $fecha,
+                'agente' => $agente->name];
+
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.nombramiento', $data);
+        $pdf->set_option('defaultFont', 'Arial');
+        return $pdf->stream('Nombramiento de '. $data['nombre'] .'.pdf');
+    }
+
+    public function obtenerFecha()
+    {
+        // Obtener la fecha y hora actual
+        $fechaActual = Carbon::now();
+
+        // También puedes formatear la fecha según tus necesidades
+        $fechaFormateada = $fechaActual->format('Y-m-d');
+        return $fechaFormateada;
     }
 
     public function convertirFecha($fecha) {

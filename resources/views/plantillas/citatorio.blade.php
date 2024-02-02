@@ -64,7 +64,7 @@ footer {
     <h5 ALIGN=left>Presente</h5>
     {{-- <br> --}}
     <p  ALIGN=JUSTIFY>
-        El que suscribe C. {{ strtoupper($nombre) }}, Agente municipal Constitucional, legalmente en funciones de la población de santo Domingo Tlaltinango perteneciente al municipio  de Santiago Suchilquitongo, Etla, Oax., por este medio, me permito citarlo. Para el día {{$fecha_c}} a las {{$hora}} hrs. En  el lugar que ocupa la agencia municipal  para tratar asuntos de suma importancia para nuestra comunidad.  No dudando de su puntual asistencia, queda ante usted.
+        El que suscribe C. {{ strtoupper($agente) }}, Agente municipal Constitucional, legalmente en funciones de la población de santo Domingo Tlaltinango perteneciente al municipio  de Santiago Suchilquitongo, Etla, Oax., por este medio, me permito citarlo. Para el día {{$fecha_c}} a las {{$hora}} hrs. En  el lugar que ocupa la agencia municipal  para tratar asuntos de suma importancia para nuestra comunidad.  No dudando de su puntual asistencia, queda ante usted.
     </p>
     {{-- <br> --}}
     <h5><center>ATENTAMENTE</center></h5>
@@ -83,7 +83,7 @@ footer {
     <h5 ALIGN=left>Presente</h5>
     {{-- <br> --}}
     <p  ALIGN=JUSTIFY>
-        El que suscribe C. {{ strtoupper($nombre) }}, Agente municipal Constitucional, legalmente en funciones de la población de santo Domingo Tlaltinango perteneciente al municipio  de Santiago Suchilquitongo, Etla, Oax., por este medio, me permito citarlo. Para el día {{$fecha_c}} a las {{$hora}} hrs. En  el lugar que ocupa la agencia municipal  para tratar asuntos de suma importancia para nuestra comunidad.  No dudando de su puntual asistencia, queda ante usted.
+        El que suscribe C. {{ strtoupper($agente) }}, Agente municipal Constitucional, legalmente en funciones de la población de santo Domingo Tlaltinango perteneciente al municipio  de Santiago Suchilquitongo, Etla, Oax., por este medio, me permito citarlo. Para el día {{$fecha_c}} a las {{$hora}} hrs. En  el lugar que ocupa la agencia municipal  para tratar asuntos de suma importancia para nuestra comunidad.  No dudando de su puntual asistencia, queda ante usted.
     </p>
     {{-- <br> --}}
     <h5><center>ATENTAMENTE</center></h5>

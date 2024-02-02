@@ -154,6 +154,8 @@ class CalificacionController extends Controller
         $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
                         $query->where('name', $rolEspecifico);
                         })->first();
+        $fecha = $this->obtenerfecha();
+        $fechaActual = $this->formatoFecha($fecha);
 
         $data = ['ciudadano' => $query->ciudadano,
                 'apellido_p' => $query->ap,
@@ -163,13 +165,14 @@ class CalificacionController extends Controller
                 'cargo' => $query->cargo,
                 'fecha_ini'=>$this->convertirFecha($query->fi),
                 'fecha_fin' => $this->convertirFecha($query->ff),
-                'agente' => $agente->name];
+                'agente' => $agente->name,
+                'fecha_actual' => $fechaActual];
 
 
 
         $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.constancia', $data);
         $pdf->set_option('defaultFont', 'Arial');
-        return $pdf->stream('Constancia de '. $data['ciudadano'] .'.pdf');
+        return $pdf->stream('Nombramiento de '. $data['ciudadano'] .'.pdf');
     }
     /**
      * Remove the specified resource from storage.
@@ -180,6 +183,32 @@ class CalificacionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function obtenerFecha()
+    {
+        // Obtener la fecha y hora actual
+        $fechaActual = Carbon::now();
+
+        // También puedes formatear la fecha según tus necesidades
+        $fechaFormateada = $fechaActual->format('Y-m-d');
+        return $fechaFormateada;
+    }
+
+    private function formatoFecha($fecha){
+        $fecha = substr($fecha, 0, 10);
+        $numeroDia = date('d', strtotime($fecha));
+        $dia = date('l', strtotime($fecha));
+        $mes = date('F', strtotime($fecha));
+        $anio = date('Y', strtotime($fecha));
+        $dias_ES = array("Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo");
+        $dias_EN = array("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday");
+        $nombredia = str_replace($dias_EN, $dias_ES, $dia);
+        // $meses_ES = array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+        $meses_ES = array("ENERO", "FEBRERO", "MARZO", "ABRIL", "MAYO", "JUNIO", "JULIO", "AGOSTO", "SEPTIEMBRE", "OCTUBRE", "NOBIEMBRE", "DICIEMBRE");
+        $meses_EN = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
+        $nombreMes = str_replace($meses_EN, $meses_ES, $mes);
+        return $numeroDia." DE ".$nombreMes." DEL ".$anio;
     }
 
     public function convertirFecha($fecha) {

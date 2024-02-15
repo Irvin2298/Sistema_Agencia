@@ -14,6 +14,7 @@ use App\Http\Controllers\CalificacionController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\DocumentoController;
+use App\Http\Controllers\DocumentoGeneradoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,6 +38,8 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/documentos/documentos_generados', [App\Http\Controllers\DocumentoGeneradoController::class, 'index'])->name('index');
+
 Route::post('agenda/eliminar/{id}',[AgendaController::class, 'eliminar'])->name('agenda.eliminar');
 
 Route::post('agenda/actualizar/',[AgendaController::class, 'actualizar'])->name('agenda.actualizar');
@@ -44,6 +47,8 @@ Route::post('agenda/actualizar/',[AgendaController::class, 'actualizar'])->name(
 Route::post('agenda/drag_drop/',[AgendaController::class, 'drag_drop'])->name('agenda.drag_drop');
 
 Route::post('ciudadanos/eliminarId/{id}',[CiudadanoController::class, 'eliminarId'])->name('ciudadanos.eliminar');
+
+Route::post('documentos/nombramientos/eliminarId/{id}',[DocumentoGeneradoController::class, 'eliminarId'])->name('documentosGenerados.eliminar');
 
 Route::post('cargos/eliminar/{id}',[CargoController::class, 'eliminar'])->name('cargos.eliminar');
 
@@ -57,7 +62,12 @@ Route::post('documentos/recibo-generado',[DocumentoController::class, 'crearReci
 Route::post('documentos/citatorio-generado',[DocumentoController::class, 'crearCitatorio'])->name('documentos.crearCitatorio');
 
 Route::get('documentos/constancia/{idd}',[CalificacionController::class, 'crearConstancia'])->name('documentos.constancia');
+
+Route::get('documentos/documentos_generados',[DocumentoGeneradoController::class, 'index'])->name('documentosGenerados.index');
+
 Route::post('documentos/nombramiento',[DocumentoController::class, 'crearNombramiento'])->name('documentos.crearNombramiento');
+
+Route::get('documentos/nombramiento/{id}',[DocumentoGeneradoController::class, 'crearNombramiento'])->name('documentosGenerados.crearNombramiento');
 
 // Route::post('/mark-as-read', 'AgendaController@markNotificacion')->name('markNotificacion');
 
@@ -83,6 +93,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('post', PostController::class);
     Route::resource('grupos', GrupoController::class);
     Route::resource('documentos', DocumentoController::class);
+    Route::resource('documentos/nombramientos_generados', DocumentoGeneradoController::class);
 });
 
 //Ruta para marcar una notificacion como leída

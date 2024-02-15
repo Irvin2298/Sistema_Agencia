@@ -12,7 +12,7 @@ use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
-class DocumentoController extends Controller
+class DocumentoGeneradoController extends Controller
 {
     public $ver = false;
     /**
@@ -23,7 +23,9 @@ class DocumentoController extends Controller
 
     public function index(Request $request)
     {
-        return view('documentos.index');
+        $query = Nombramiento::query();
+        $nombramientos = $query->get();
+        return view('documentos.nombramientos', compact('nombramientos'));
     }
 
     private function formatoFecha($fecha){
@@ -72,48 +74,22 @@ class DocumentoController extends Controller
         //return view('plantillas.recibo');
     }
 
-    public function crearCitatorio(Request $request)
+    public function crearNombramiento($id)
     {
-        $nombre = $request->input('nombre');
-        $fecha_c = $request->input('fecha_citatorio');
-        $fecha=$this->convertirFecha($fecha_c);
-        $hora = $request->input('hora');
+        $nombramiento = Nombramiento::find($id);
 
-        $now=$this->convertirFecha(Carbon::now()->format('d-m-Y'));
-
-        $rolEspecifico = 'Agente Municipal';
-        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
-                        $query->where('name', $rolEspecifico);
-                        })->first();
-
-        $data = ['nombre'=>$nombre,
-                'fecha_c'=>$fecha,
-                'hora' => $hora,
-                'hoy' => $now,
-                'agente' => $agente->name];
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.citatorio', $data);
-        $pdf->set_option('defaultFont', 'Arial');
-        return $pdf->stream('Citatorio con fecha del '.  $fecha . '.pdf');
-    }
-
-    public function crearNombramiento(Request $request)
-    {
-        $nombre = $request->input('nombre');
-        $apellido_p = $request->input('apellido_p');
-        $apellido_m = $request->input('apellido_m');
-        $cargo = $request->input('cargo');
-        $fecha_ini = $request->input('fecha_inicio');
+        $nombre = $nombramiento->nombre;
+        $apellido_p = $nombramiento->apellido_paterno;
+        $apellido_m = $nombramiento->apellido_materno;
+        $cargo = $nombramiento->cargo;
+        $fecha_ini = $nombramiento->fecha_inicio;
         $fecha_ini=$this->formatoFecha($fecha_ini);
-        $fecha_fin = $request->input('fecha_final');
+        $fecha_fin = $nombramiento->fecha_fin;
         $fecha_fin=$this->formatoFecha($fecha_fin);
-        $fecha=$this->obtenerFecha();
+        $fecha=$nombramiento->fecha_creación;
         $fecha=$this->formatoFecha($fecha);
 
-        $rolEspecifico = 'Agente Municipal';
-        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
-                        $query->where('name', $rolEspecifico);
-                        })->first();
+        $agente = $nombramiento->nombre_agente;
 
         $data = ['nombre' => $nombre,
                 'apellido_p'=>$apellido_p,
@@ -122,23 +98,9 @@ class DocumentoController extends Controller
                 'fecha_ini' => $fecha_ini,
                 'fecha_fin' => $fecha_fin,
                 'fecha_actual' => $fecha,
-                'agente' => $agente->name];
+                'agente' => $agente];
 
-                $event = new Nombramiento;
-                $fecha1=$this->obtenerFecha();
-
-                $event->nombre = $request->input('nombre');
-                $event->apellido_paterno = $request->input('apellido_p');
-                $event->apellido_materno = $request->input('apellido_m');
-                $event->cargo = $request->input('cargo');
-                $event->fecha_inicio = $request->input('fecha_inicio');
-                $event->fecha_fin = $request->input('fecha_final');
-                $event->fecha_creación = $fecha1;
-                $event->nombre_agente = $agente->name;
-        
-                $event->save();
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.nombramiento', $data);
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.nombramientoAntiguo', $data);
         $pdf->set_option('defaultFont', 'Arial');
         return $pdf->stream('Nombramiento de '. $data['nombre'] .'.pdf');
     }
@@ -284,5 +246,12 @@ class DocumentoController extends Controller
     public function destroy(Ciudadano $ciudadano)
     {
 
+    }
+
+    public function eliminarId($id)
+    {
+        DB::table('nombramientos')->whereId($id)->delete();
+
+        return redirect()->route('documentos.nombramientos')->with('success', 'Nombramiento eliminado exitosamente.');
     }
 }

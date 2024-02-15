@@ -52,26 +52,28 @@ height: 2cm;
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
 <main>
     <br>
-    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha}}.</>
+    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha_actual}}.</>
     <br>
+    <h4 ALIGN=RIGHT>NOMBRAMIENTO</>
     <br>
-    <h4 ALIGN=RIGHT>BUENO POR {{$cantidad_num}}.00</>
+    <h4 ALIGN=LEFT>C. {{strtoupper($nombre)}} {{strtoupper($apellido_p)}} {{strtoupper($apellido_m)}}</>
     <br>
-    <br>
-    <h4><center>RECIBO</center></>
-    <br>
-    <p  ALIGN=JUSTIFY>Recibí de la Agencia Municipal de Santo Domingo Tlaltinango, Santiago Suchilquitongo, Etla, Oaxaca, la cantidad de ${{$cantidad_num}}.00 ({{$cantidad_let}} pesos 00/100 MN)
-         por concepto de {{$concepto}}.
+    <p  ALIGN=JUSTIFY>El que suscribe C. {{$agente}}, Agente Municipal, legalmente en funciones de la población de Santo Domingo Tlaltinango, 
+        Municipio de Santiago Suchilquitongo, Etla, Oax., y con las facultades que nuestras leyes me confieren, me permito extender el siguiente nombramiento
+         de: 
     </p>
     <br>
-    <h4><center>RECIBÍ</center></>
+    <h4><center>{{$cargo}}</center></>
     <br>
+    <p  ALIGN=JUSTIFY>Cargo que fue conferido en asamblea general de población, y  dicho cargo se desempeñó dentro del periodo del {{$fecha_ini}} al
+         {{$fecha_fin}}, que fué conferido por ser una persona con un gran sentido de responsabilidad, en beneficio de nuestra comunidad.
+    </p>
+    <br>
+    <h4><center>ATENTAMENTE</center></>
+    <h4><center>AGENTE MUNICIAPL</center></>
     <br>
     <p><center>________________________</center></p>
     <!-- <br> -->
-    <h4><center>{{$nombre}}</center></>
-
-
-</main>
+    <h4><center>C. {{strtoupper($agente)}}</center></h5>
 </body>
 </html>

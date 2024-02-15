@@ -51,7 +51,11 @@
     .card-1{
         background-color: #D6EAF8;
     }
+    .custom-btn {
+        line-height: 2;
+    }
     </style>
+    
     @yield('page_css')
 
 

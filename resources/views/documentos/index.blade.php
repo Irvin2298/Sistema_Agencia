@@ -28,7 +28,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="sexo">Selecciona el documento a generar: </label>
-                                        <select required name="documento" class="form-control selectpicker" data-live-search="true" id="documentos">
+                                        <select required name="documento" style="height: 40px;" class="form-control selectpicker" data-live-search="true" id="documentos">
                                             <option disabled selected value="">Documentos</option>
                                             <option value="Recibo">Recibo</option>
                                             <option value="Nombramiento">Nombramiento</option>
@@ -36,6 +36,17 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="form-group"  id="contenidoHistorial" style="display: none;">
+                                    <div class="container form-group">
+                                    <label for="sexo">Puedes visualizar archivos anteriores: </label>
+                                        <br>
+                                    <!-- <center><button class="btn btn-success custom-btn" style="height: 35px; float: rigth;" target="_blank">Ver historial</button></center> -->
+                                    
+                                    <center><a href="{{ route('documentosGenerados.index') }}" class="btn btn-success custom-btn" style="height: 35px; float: rigth;">Ver historial</a></center>
+                                    </div>
+                                
+                                </div>
+                                <!-- <button type="submit" class="btn btn-success custom-btn" style="height: 35px;" target="_blank">Generar Nombramiento</button> -->
                             </div>
 
 
@@ -160,6 +171,12 @@
                                     <!-- Datos para generar el citatorio -->
                                     <label class="text-danger">Los campos con * son obligatorios</label>
                                     <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre: </label><span class="required text-danger">*</span>
+                                            <input type="text" name="nombre" title="Solo se permiten letras y espacios" class="form-control" placeholder="Nombre completo del remitente" required>
+                                        </div>
+                                    </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="fecha_citatorio">Fecha del citatorio: <span class="required text-danger">*</span></label>
@@ -209,6 +226,28 @@
             var opcionSeleccionada = $(this).val();
             $('#contenido' + opcionSeleccionada).show();
         });
+    });
+</script>
+
+<script>
+    // Obtén referencias a los elementos select y div
+    var selectOpcion = document.getElementById('documentos');
+    var divContenido = document.getElementById('contenidoHistorial');
+
+    // Agrega un evento de cambio al select
+    selectOpcion.addEventListener('change', function() {
+      // Obtiene el valor seleccionado en el select
+      var opcionSeleccionada = selectOpcion.value;
+
+      // Actualiza el contenido del div según la opción seleccionada
+      switch (opcionSeleccionada) {
+        case 'Nombramiento':
+            $('#contenidoHistorial').show();
+          break;
+        default:
+          // Manejo de valores no esperados (opcional)
+          $('#contenidoHistorial').hide();
+      }
     });
 </script>
 @endsection

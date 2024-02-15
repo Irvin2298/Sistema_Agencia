@@ -60,7 +60,7 @@ footer {
     <h4 ALIGN=left>Santo Domingo Tlaltinango, Santiago Suchilquitongo, Etla, Oax. A {{$hoy}}.</h4>
     {{-- <br> --}}
     {{-- <br> --}}
-    <h5 ALIGN=left>C._________________________________</h5>
+    <h5 ALIGN=left><u>C. {{ strtoupper($nombre) }}</u></h5>
     <h5 ALIGN=left>Presente</h5>
     {{-- <br> --}}
     <p  ALIGN=JUSTIFY>
@@ -79,7 +79,7 @@ footer {
     <h4 ALIGN=left>Santo Domingo Tlaltinango, Santiago Suchilquitongo, Etla, Oax. A {{$hoy}}.</h4>
     {{-- <br> --}}
     {{-- <br> --}}
-    <h5 ALIGN=left>C._________________________________</h5>
+    <h5 ALIGN=left><u>C. {{ strtoupper($nombre) }}</u></h5>
     <h5 ALIGN=left>Presente</h5>
     {{-- <br> --}}
     <p  ALIGN=JUSTIFY>

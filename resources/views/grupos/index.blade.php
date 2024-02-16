@@ -62,13 +62,18 @@
                                   <tr>
                                     <td style="display: none;">{{ $grupo->id }}</td>
                                     <td>{{ ucwords( $grupo->nombre) }}</td>
-                                    <td>{{ ucwords($grupo->fecha_inicio)}}</td>
                                     @php
-                                        \Carbon\Carbon::setlocale(LC_TIME, 'es_ES.utf8');
+                                    $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $grupo->fecha_inicio);
+                                    $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                                     @endphp
+                                    <td>{{ ucwords($fechaInicioEnPalabras)}}</td>
+                                    @php
+                                    $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $grupo->fecha_fin);
+                                    $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
                                      @endphp
 
                                     <!-- <td>{{ \Carbon\Carbon::createFromFormat('Y-m-d', $grupo->fecha_fin)->formatLocalized('%d de %B de %Y') }}</td> -->
-                                    <td>{{ ucwords($grupo->fecha_fin)}}</td>
+                                    <td>{{ ucwords($fechaFinEnPalabras)}}</td>
                                     <td>{{ ucwords( $grupo->nom_cargos) }}</td>
                                     <td>
                                         {{-- <div class="form-check">

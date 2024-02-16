@@ -10,20 +10,20 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "axios": "^1.6.7",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14",
-        "webpack": "^5.51.1"
+        "postcss": "^8.4.35",
+        "webpack": "^5.90.1"
     },
     "dependencies": {
         "@fortawesome/fontawesome-free": "^5.13.1",
         "bootstrap": "^4.0.0",
-        "datatables.net-dt": "^1.10.21",
+        "datatables.net-dt": "^1.13.10",
         "izitoast": "^1.4.0",
         "jquery": "^3.2",
         "jquery.nicescroll": "^3.7.6",
         "jsrender": "^1.0.5",
-        "laravel-mix": "^6.0.28",
+        "laravel-mix": "^6.0.49",
         "popper.js": "^1.12",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",

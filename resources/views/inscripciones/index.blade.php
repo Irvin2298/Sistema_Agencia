@@ -35,12 +35,14 @@
                                         <td>{{ ucwords($inscripcion->grupo) }}</td>
                                         <td>
                                             @if($inscripcion->fi < now())
-                                                    {{ ucwords('Curso impartido')}}
+                                                    {{ ucwords('0 Días')}}
                                             @else
                                                 @php
-                                                    $fechaRestante = \Carbon\Carbon::parse($inscripcion->fi)->diff(now());
+                                                    $fechaRestante = \Carbon\Carbon::parse($inscripcion->fi)->diff($inscripcion->ff);
+                                                    $meses = $fechaRestante->format('%m');
+                                                    $dias = $fechaRestante->format('%d');
                                                 @endphp
-                                                    {{ ucwords($fechaRestante->days . ' días') }}
+                                                    {{ ucwords($meses . ' meses y '. $dias . ' días') }}
                                             @endif
                                         </td>
                                         <td class="text-left">

@@ -57,7 +57,20 @@
                 <img alt="image" src="{{ asset('img/logo.png') }}"
                      class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">
                 <div class="d-sm-none d-lg-inline-block">
-                    ¡Hola! {{Str::words(Auth::user()->name)}}</div>
+                    @php
+                    $user = Str::words(Auth::user());
+                    if ($user->roles->isNotEmpty()) {
+                        $rolActual = $user->roles->first()->name;
+                    } else
+                        $rolActual = '';
+                    @endphp
+                    
+                    @if($rolActual != '')
+                        ¡Hola! {{Str::words(Auth::user()->name)}} <br>Ingresaste como {{$rolActual}}
+                    @else
+                        ¡Hola! {{Str::words(Auth::user()->name)}}
+                    @endif
+                    </div>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right">

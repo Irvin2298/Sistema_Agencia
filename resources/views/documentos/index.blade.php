@@ -92,7 +92,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group nf-date">
                                             <label for="fecha_recibo">Fecha: <span class="required text-danger">*</span></label>
-                                            <input required type="date" name="fecha_recibo" max="{{ now()->format('Y-m-d') }}" class="form-control">
+                                            <input required type="date" id="fechaRecibo" name="fecha_recibo" min="{{ now()->format('Y') }}-01-01" max="{{ now()->format('Y-m-d') }}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -179,15 +179,20 @@
                                     </div>
                                         <div class="col-md-4">
                                             <div class="form-group">
+                                            @php
+                                                $Date = date("Y-m-d");
+                                                $nuevafecha = strtotime ('+2 month' , strtotime($Date)); //Se le restan 15
+                                                $nuevafecha = date ('Y-m-d',$nuevafecha);
+                                            @endphp
                                                 <label for="fecha_citatorio">Fecha del citatorio: <span class="required text-danger">*</span></label>
-                                                <input required type="date" name="fecha_citatorio" min="{{ now()->format('Y-m-d') }}" class="form-control">
+                                                <input required type="date" id="fechaCitatorio" name="fecha_citatorio" min="{{ now()->format('Y-m-d') }}" max="{{$nuevafecha}}";   class="form-control">
                                             </div>
                                         </div>
 
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label for="hora">Hora: <span class="required text-danger">*</span></label>
-                                                <input type="time" id="hora" name="hora" class="form-control">
+                                                <input required type="time" id="horaRecibo" min="07:00" max="22:00" name="hora" class="form-control">
                                             </div>
                                         </div>
 
@@ -250,6 +255,43 @@
       }
     });
 </script>
+
+<script>
+    var fechasInhabiles = @json($fechasInhabiles); // Convierte el array de fechas a formato JSON
+
+    document.getElementById('fechaCitatorio').addEventListener('input', function() {
+        var fechaSeleccionada = this.value;
+
+        // Verificar si la fecha seleccionada está en la lista de fechas inhabilitadas
+        if (fechasInhabiles.includes(fechaSeleccionada)) {
+            Swal.fire({
+                icon: 'warning',
+                html: `<h3>Esta fecha no está permitida. Por favor, elige otra.</h3>
+                    <p>Has elegido un día inhábil!!!</p>
+                    `,
+            });
+            this.value = ''; // Limpiar el campo si se selecciona una fecha inhabilitada
+        }
+    });
+</script>
+
+<script>
+        document.getElementById('horaRecibo').addEventListener('input', function() {
+            var selectedTime = this.value;
+            var minTime = this.getAttribute('min');
+            var maxTime = this.getAttribute('max');
+
+            if (selectedTime < minTime || selectedTime > maxTime) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Hora no permitida',
+                    text: 'Selecciona una hora dentro del rango permitido (7:00 A.M. y 10:00 P.M.).',
+                });
+                this.value = ''; // Limpiar el campo si se selecciona una hora fuera de los límites
+            }
+        });
+    </script>
+
 @endsection
 
 

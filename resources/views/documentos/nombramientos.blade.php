@@ -20,12 +20,10 @@
                             <table class="table table-striped mt-2 table_id" id="miTabla2">
                               <thead style="background-color:#6777ef">
                                   <th style="display: none; cursor: pointer;">ID</th>
-                                  <th style="color:#fff; cursor: pointer;">Nombre <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Apellido Paterno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Apellido Materno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">Ciudadano <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Cargo  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Fecha Inicio <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Fecha Fin <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <!-- <th style="color:#fff; cursor: pointer;">Fecha Inicio <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">Fecha Fin <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th> -->
                                   <th style="color:#fff; cursor: pointer;">Fecha Creacion <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Agente <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff;" class="text-center">Acciones</th>
@@ -34,13 +32,15 @@
                                 @foreach ($nombramientos as $nombramiento)
                                   <tr>
                                     <td style="display: none;">{{ $nombramiento->id }}</td>
-                                    <td>{{ ucwords($nombramiento->nombre) }}</td>
-                                    <td>{{ ucwords($nombramiento->apellido_paterno) }}</td>
-                                    <td>{{ ucwords($nombramiento->apellido_materno) }}</td>
+                                    <td>{{ ucwords($nombramiento->nombre) }} {{ ucwords($nombramiento->apellido_paterno) }} {{ ucwords($nombramiento->apellido_materno) }}</td>
                                     <td>{{ ucwords($nombramiento->cargo) }}</td>
-                                    <td>{{ ucwords($nombramiento->fecha_inicio) }}</td>
-                                    <td>{{ ucwords($nombramiento->fecha_fin) }}</td>
-                                    <td>{{ ucwords($nombramiento->fecha_creación) }}</td>
+                                    <!-- <td>{{ ucwords($nombramiento->fecha_inicio) }}</td>
+                                    <td>{{ ucwords($nombramiento->fecha_fin) }}</td> -->
+                                    @php
+                                        $fechaCreacion = \Carbon\Carbon::createFromFormat('Y-m-d', $nombramiento->fecha_creación);
+                                        $fechaCreacionEnPalabras = $fechaCreacion->isoFormat('LL');
+                                        @endphp
+                                    <td>{{ ucwords($fechaCreacionEnPalabras) }}</td>
                                     <td>{{ ucwords($nombramiento->nombre_agente) }}</td>
                                     <td>
                                         
@@ -91,12 +91,10 @@
 
     columns: [
         { Id: 'Id' },
-        { Nombre: 'Nombre' },
-        { Apellido_p: 'Apellido_p' },
-        { Apellido_m: 'Apellido_m' },
+        { Nombre: 'Ciudadano' },
         { Cargo: 'Cargo' },
-        { Fecha_inicio: 'Fecha_inicio' },
-        { Fecha_fin: 'Fecha_fin' },
+        // { Fecha_inicio: 'Fecha_inicio' },
+        // { Fecha_fin: 'Fecha_fin' },
         { Fecha_creacion: 'Fecha_creación' },
         { Nombre_agente: 'Nombre_agente' },
         { Acciones: 'Acciones' }

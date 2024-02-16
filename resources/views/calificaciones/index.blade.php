@@ -64,7 +64,13 @@
                                                 <span class="badge badge-danger">No aprobado</span>
                                             @endif
                                         </td>
-                                        <td>{{ date('d/m/Y', strtotime($inscripcion->fi)) }} al {{ date('d/m/Y', strtotime($inscripcion->ff)) }}</td>
+                                        @php
+                                        $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->fi);
+                                        $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                                        $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->ff);
+                                        $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
+                                        @endphp
+                                        <td>{{ $fechaInicioEnPalabras }} al {{ $fechaFinEnPalabras}}</td>
                                         <td>
                                             <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal-{{ $inscripcion->idd }}" title="Calificar ciudadano"><i class="fa fa-pencil" aria-hidden="true"></i> Evaluar</a>
 
@@ -101,6 +107,16 @@
                 <!-- Agrega aquí los detalles de la inscripción del ciudadano -->
                 <h6 class="modal-title">Evaluar el cargo del ciudadano:</h6>
                 <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($inscripcion->ciudadano) }} {{ ucwords($inscripcion->ap) }} {{ ucwords($inscripcion->am) }}</H5>
+                <h6 class="modal-title">Quien desempeñó el cargo de:</h6>
+                <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($inscripcion->cargo) }}</H5>
+                <h6 class="modal-title">En el periodo comprendido del:</h6>
+                @php
+                $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->fi);
+                $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->ff);
+                $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
+                @endphp
+                <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($fechaInicioEnPalabras) }} al {{ ucwords($fechaFinEnPalabras) }}</H5>
                 <form action="{{ route('calificaciones.update',$inscripcion->idd) }}" method="POST">
                     @csrf
                     <div class="row">

@@ -325,12 +325,12 @@
     var op = document.getElementById("validar").value;
     console.log('El valor de op es: ' + op);
       $("#exampleModal").modal();
-      // $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
-      $("input[name=fecha_inicio]").val(start.format('YYYY-MM-DD'));
+      $("input[name=fecha_inicio]").val(start.format('DD-MM-YYYY'));
+      // $("input[name=fecha_inicio]").val(start.format('YYYY-MM-DD'));
 
-      // var valorFechaFin = end.format("DD-MM-YYYY");
-      var valorFechaFin = end.format("YYYY-MM-DD");
-      var F_final = moment(valorFechaFin, "YYYY-MM-DD").subtract(1, 'days').format('YYYY-MM-DD'); //Le resto 1 dia
+      var valorFechaFin = end.format("DD-MM-YYYY");
+      // var valorFechaFin = end.format("YYYY-MM-DD");
+      var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); //Le resto 1 dia
       $("input[name=fecha_fin]").val(F_final);
       $("input[name=fecha_final]").val(F_final);
     },
@@ -385,11 +385,11 @@ eventDrop: function (event, delta) {
   var idEvento = event._id;
   $('#modalUpdateEvento').modal('hide');
   if(event.end == null){
-    var start = (event.start.format('YYYY-MM-DD'));
-    var end = (event.start.format("YYYY-MM-DD"));
+    var start = (event.start.format('DD-MM-YYYY'));
+    var end = (event.start.format("DD-MM-YYYY"));
     } else{
-      var start = (event.start.format('YYYY-MM-DD'));
-      var end = (event.end.format("YYYY-MM-DD"));
+      var start = (event.start.format('DD-MM-YYYY'));
+      var end = (event.end.format("DD-MM-YYYY"));
     }
 
 
@@ -410,15 +410,15 @@ eventClick:function(event){
     $('input[name=idEvento').val(idEvento);
     $('input[name=evento').val(event.title);
     $('input[name=descripcionn').val(event.descripcion);
-    $('input[name=fecha_inicioo').val(event.start.format('YYYY-MM-DD'));
+    $('input[name=fecha_inicioo').val(event.start.format('DD-MM-YYYY'));
 
     console.log(event.start);
     if(event.end == null){
-      $('input[name=fecha_finn').val(event.start.format('YYYY-MM-DD'));
-      $('input[name=fecha_finall').val(event.start.format('YYYY-MM-DD'));
+      $('input[name=fecha_finn').val(event.start.format('DD-MM-YYYY'));
+      $('input[name=fecha_finall').val(event.start.format('DD-MM-YYYY'));
     } else{
-      var valorFechaFin = event.end.format("YYYY-MM-DD");
-      var F_final = moment(valorFechaFin, "YYYY-MM-DD").subtract(1, 'days').format('YYYY-MM-DD'); // Le restamos un día
+      var valorFechaFin = event.end.format("DD-MM-YYYY");
+      var F_final = moment(valorFechaFin, "DD-MM-YYYY").subtract(1, 'days').format('DD-MM-YYYY'); // Le restamos un día
       $('input[name=fecha_finn').val(F_final);
       $('input[name=fecha_finall').val(F_final);
     }

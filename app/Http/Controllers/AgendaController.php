@@ -9,6 +9,7 @@ use App\Models\Evento;
 use App\Models\User;
 use App\Events\NotificacionEvento;
 use Illuminate\Notifications\Notifiable;
+use Carbon\Carbon;
 
 class AgendaController extends Controller
 {
@@ -71,8 +72,12 @@ class AgendaController extends Controller
 
         $event->nombre = $request->input('nombre');
         $event->descripcion = $request->input('descripcion');
-        $event->fecha_inicio = $request->input('fecha_inicio');
-        $event->fecha_fin = $request->input('fecha_final');
+        $fechaInicio = $request->input('fecha_inicio');
+        $fechaInicioYmd = $this->cambiarFormatoFecha($fechaInicio);
+        $event->fecha_inicio = $fechaInicioYmd;
+        $fechaFin = $request->input('fecha_final');
+        $fechaFinYmd = $this->cambiarFormatoFecha($fechaFin);
+        $event->fecha_Fin = $fechaFinYmd;
         $event->hora = $horaEvento;
         $event->estado = true;
 
@@ -87,6 +92,17 @@ class AgendaController extends Controller
         event(new NotificacionEvento($event));
 
         return redirect()->route('agenda.index')->with('success', 'Evento guardado exitosamente.');
+    }
+
+    public function cambiarFormatoFecha($fechaEnFormatoDDMMYYYY)
+    {
+        // Convertir la fecha a objeto Carbon usando el formato "d-m-Y"
+        $fechaCarbon = Carbon::createFromFormat('d-m-Y', $fechaEnFormatoDDMMYYYY);
+
+        // Formatear la fecha en el nuevo formato "Y-m-d"
+        $fechaEnFormatoYYYYMMDD = $fechaCarbon->format('Y-m-d');
+
+        return $fechaEnFormatoYYYYMMDD;
     }
 
     /**
@@ -166,8 +182,12 @@ class AgendaController extends Controller
         $event = evento::findOrFail($id);
         $event->nombre = $_POST["evento"];
         $event->descripcion = $_POST['descripcionn'];
-        $event->fecha_inicio = $_POST['fecha_inicioo'];
-        $event->fecha_fin = $_POST['fecha_finall'];
+        $fechaInicio = $_POST['fecha_inicioo'];
+        $fechaInicioYmd = $this->cambiarFormatoFecha($fechaInicio);
+        $event->fecha_inicio = $fechaInicioYmd;
+        $fechaFin = $_POST['fecha_finall'];
+        $fechaFinYmd = $this->cambiarFormatoFecha($fechaFin);
+        $event->fecha_fin = $fechaFinYmd;
         $event->hora = $horaEvento;
 
         $event->save();
@@ -184,8 +204,12 @@ class AgendaController extends Controller
         $end              = $_REQUEST['end']; 
 
         $event = evento::findOrFail($id);
-        $event->fecha_inicio = $_REQUEST['start'];
-        $event->fecha_fin = $_REQUEST['end']; 
+        $fechaInicio = $_REQUEST['start'];
+        $fechaInicioYmd = $this->cambiarFormatoFecha($fechaInicio);
+        $event->fecha_inicio = $fechaInicioYmd;
+        $fechaFin = $_REQUEST['end'];
+        $fechaFinYmd = $this->cambiarFormatoFecha($fechaFin);
+        $event->fecha_fin = $fechaFinYmd;
         $event->save();
     }
 

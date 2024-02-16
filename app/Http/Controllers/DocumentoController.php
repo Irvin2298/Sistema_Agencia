@@ -23,7 +23,27 @@ class DocumentoController extends Controller
 
     public function index(Request $request)
     {
-        return view('documentos.index');
+        $fechaActual = Carbon::now();
+
+        // También puedes formatear la fecha según tus necesidades
+        $anioActual = $fechaActual->format('Y');
+        $fecha1 = $anioActual.'-01'.'-01';
+        $fecha2 = $anioActual.'-02'.'-05';
+        $fecha3 = $anioActual.'-03'.'-21';
+        $fecha4 = $anioActual.'-05'.'-01';
+        $fecha5 = $anioActual.'-09'.'-16';
+        $fecha6 = $anioActual.'-12'.'-25';
+
+        $fechasInhabiles = [
+            $fecha1,
+            $fecha2,
+            $fecha3,
+            $fecha4,
+            $fecha5,
+            $fecha6,
+        ];
+
+        return view('documentos.index')->with('fechasInhabiles', $fechasInhabiles);
     }
 
     private function formatoFecha($fecha){

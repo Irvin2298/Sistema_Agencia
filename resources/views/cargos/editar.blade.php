@@ -64,8 +64,8 @@
                                 </div>
 
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                    <a href="{{ route('cargos.index') }}" class="btn btn-warning">Cancelar</a>
+                                    <a href="{{ route('cargos.index') }}" style="float: right;" class="btn btn-warning">Cancelar</a>
+                                    <button type="submit" style="float: right; margin-right: 10px;" class="btn btn-primary">Guardar</button>
                                 </div>
                             </div>
                         </form>

@@ -12,7 +12,7 @@
                         <div class="card-body">
                                 <div class="row">
                                     <div class="col-md-4 col-xl-4">
-
+                                
                                     <div class="card bg-c-blue order-card">
                                             <div class="card-block">
                                             <h5>Usuarios</h5>
@@ -25,7 +25,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    
                                     <div class="col-md-4 col-xl-4">
                                         <div class="card bg-c-green order-card">
                                             <div class="card-block">
@@ -34,7 +34,7 @@
                                                 use Spatie\Permission\Models\Role;
                                                  $cant_roles = Role::count();
                                                 @endphp
-                                                <h2 class="text-right"><i class="fa fa-user-lock f-left"></i><span>{{$cant_roles}}</span></h2>
+                                                <h2 class="text-right"><i class="fas fa-user-lock f-left"></i><span>{{$cant_roles}}</span></h2>
                                                 <p class="m-b-0 text-right"><a href="/roles" class="text-white">Ver más</a></p>
                                             </div>
                                         </div>

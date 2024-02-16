@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Ciudadano;
 use App\Models\User;
-use App\Models\Nombramiento;
 use App\Models\Recibo;
 use Illuminate\Support\Facades\DB;
 use PDF;
@@ -13,7 +12,7 @@ use Carbon\Carbon;
 
 use Illuminate\Http\Request;
 
-class DocumentoController extends Controller
+class ReciboGeneradoController extends Controller
 {
     public $ver = false;
     /**
@@ -24,27 +23,9 @@ class DocumentoController extends Controller
 
     public function index(Request $request)
     {
-        $fechaActual = Carbon::now();
-
-        // También puedes formatear la fecha según tus necesidades
-        $anioActual = $fechaActual->format('Y');
-        $fecha1 = $anioActual.'-01'.'-01';
-        $fecha2 = $anioActual.'-02'.'-05';
-        $fecha3 = $anioActual.'-03'.'-21';
-        $fecha4 = $anioActual.'-05'.'-01';
-        $fecha5 = $anioActual.'-09'.'-16';
-        $fecha6 = $anioActual.'-12'.'-25';
-
-        $fechasInhabiles = [
-            $fecha1,
-            $fecha2,
-            $fecha3,
-            $fecha4,
-            $fecha5,
-            $fecha6,
-        ];
-
-        return view('documentos.index')->with('fechasInhabiles', $fechasInhabiles);
+        $query = Recibo::query();
+        $recibos = $query->get();
+        return view('documentos.recibos', compact('recibos'));
     }
 
     private function formatoFecha($fecha){
@@ -63,48 +44,35 @@ class DocumentoController extends Controller
         return $numeroDia." DE ".$nombreMes." DEL ".$anio;
     }
 
-    public function crearRecibo(Request $request)
+    public function crearRecibo($id)
     {
-        $nombre = $request->input('nombre');
-        $apellido_p = $request->input('apellido_p');
-        $apellido_m = $request->input('apellido_m');
-        $cantidad_numero = $request->input('cantidad_numero');
-        $cantidad_letra = $request->input('cantidad_letra');
-        $fecha_recibo = $request->input('fecha_recibo');
-        $fecha_recibo = $this->formatoFecha($fecha_recibo);
-        $concepto_recibo = $request->input('concepto_recibo');
+
+        $recibo = Recibo::find($id);
+
+        $nombre = $recibo->nombre;
+        $apellido_p = $recibo->apellido_paterno;
+        $apellido_m = $recibo->apellido_materno;
+        $cant_num = $recibo->cantidad_numero;
+        $cant_let = $recibo->cantidad_letra;
+        $fecha = $recibo->fecha;
+        $fecha=$this->formatoFecha($fecha);
+        $fecha_creacion = $recibo->fecha_creacion;
+        $fecha_creacion=$this->formatoFecha($fecha_creacion);
+        $concepto = $recibo->concepto;
+
         $nom = $nombre ." ". $apellido_p. " "  .$apellido_m;
 
-
         $data = ['nombre' => $nom,
-                 'cantidad_num' => $cantidad_numero,
-                 'cantidad_let' => $cantidad_letra,
-                 'fecha' => $fecha_recibo,
-                 'concepto' => $concepto_recibo,];
+                 'cantidad_num' => $cant_num,
+                 'cantidad_let' => $cant_let,
+                 'fecha' => $fecha,
+                 'fecha_creacion' => $fecha_creacion,
+                 'concepto' => $concepto
+                ];
 
-                $rolEspecifico = 'Agente Municipal';
-                $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
-                        $query->where('name', $rolEspecifico);
-                        })->first();
-
-                $event = new Recibo;
-                $fecha1=$this->obtenerFecha();
-
-                $event->nombre = $request->input('nombre');
-                $event->apellido_paterno = $request->input('apellido_p');
-                $event->apellido_materno = $request->input('apellido_m');
-                $event->cantidad_numero = $request->input('cantidad_numero');
-                $event->cantidad_letra = $request->input('cantidad_letra');
-                $event->fecha = $request->input('fecha_recibo');
-                $event->fecha_creacion = $fecha1;
-                $event->concepto = $request->input('concepto_recibo');
-                $event->nombre_agente = $agente->name;
-        
-                $event->save();
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.recibo', $data);
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.reciboAntiguo', $data);
         $pdf->set_option('defaultFont', 'Arial');
-    return $pdf->stream('Recibo de '. $nom .' ('. $fecha_recibo . ').pdf');
+        return $pdf->stream('Recibo de '. $data['nombre'] .'.pdf');
 
 
         // $pdf = PDF::loadView('plantillas.recibo');
@@ -113,48 +81,22 @@ class DocumentoController extends Controller
         //return view('plantillas.recibo');
     }
 
-    public function crearCitatorio(Request $request)
+    public function crearNombramiento($id)
     {
-        $nombre = $request->input('nombre');
-        $fecha_c = $request->input('fecha_citatorio');
-        $fecha=$this->convertirFecha($fecha_c);
-        $hora = $request->input('hora');
+        $nombramiento = Nombramiento::find($id);
 
-        $now=$this->convertirFecha(Carbon::now()->format('d-m-Y'));
-
-        $rolEspecifico = 'Agente Municipal';
-        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
-                        $query->where('name', $rolEspecifico);
-                        })->first();
-
-        $data = ['nombre'=>$nombre,
-                'fecha_c'=>$fecha,
-                'hora' => $hora,
-                'hoy' => $now,
-                'agente' => $agente->name];
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.citatorio', $data);
-        $pdf->set_option('defaultFont', 'Arial');
-        return $pdf->stream('Citatorio con fecha del '.  $fecha . '.pdf');
-    }
-
-    public function crearNombramiento(Request $request)
-    {
-        $nombre = $request->input('nombre');
-        $apellido_p = $request->input('apellido_p');
-        $apellido_m = $request->input('apellido_m');
-        $cargo = $request->input('cargo');
-        $fecha_ini = $request->input('fecha_inicio');
+        $nombre = $nombramiento->nombre;
+        $apellido_p = $nombramiento->apellido_paterno;
+        $apellido_m = $nombramiento->apellido_materno;
+        $cargo = $nombramiento->cargo;
+        $fecha_ini = $nombramiento->fecha_inicio;
         $fecha_ini=$this->formatoFecha($fecha_ini);
-        $fecha_fin = $request->input('fecha_final');
+        $fecha_fin = $nombramiento->fecha_fin;
         $fecha_fin=$this->formatoFecha($fecha_fin);
-        $fecha=$this->obtenerFecha();
+        $fecha=$nombramiento->fecha_creación;
         $fecha=$this->formatoFecha($fecha);
 
-        $rolEspecifico = 'Agente Municipal';
-        $agente = User::whereHas('roles', function ($query) use ($rolEspecifico) {
-                        $query->where('name', $rolEspecifico);
-                        })->first();
+        $agente = $nombramiento->nombre_agente;
 
         $data = ['nombre' => $nombre,
                 'apellido_p'=>$apellido_p,
@@ -163,23 +105,9 @@ class DocumentoController extends Controller
                 'fecha_ini' => $fecha_ini,
                 'fecha_fin' => $fecha_fin,
                 'fecha_actual' => $fecha,
-                'agente' => $agente->name];
+                'agente' => $agente];
 
-                $event = new Nombramiento;
-                $fecha1=$this->obtenerFecha();
-
-                $event->nombre = $request->input('nombre');
-                $event->apellido_paterno = $request->input('apellido_p');
-                $event->apellido_materno = $request->input('apellido_m');
-                $event->cargo = $request->input('cargo');
-                $event->fecha_inicio = $request->input('fecha_inicio');
-                $event->fecha_fin = $request->input('fecha_final');
-                $event->fecha_creación = $fecha1;
-                $event->nombre_agente = $agente->name;
-        
-                $event->save();
-
-        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.nombramiento', $data);
+        $pdf = PDF::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('plantillas.nombramientoAntiguo', $data);
         $pdf->set_option('defaultFont', 'Arial');
         return $pdf->stream('Nombramiento de '. $data['nombre'] .'.pdf');
     }
@@ -325,5 +253,12 @@ class DocumentoController extends Controller
     public function destroy(Ciudadano $ciudadano)
     {
 
+    }
+
+    public function eliminarId($id)
+    {
+        DB::table('recibos')->whereId($id)->delete();
+
+        return redirect()->route('documentos.recibos')->with('success', 'Recibo eliminado exitosamente.');
     }
 }

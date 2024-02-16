@@ -31,18 +31,25 @@
                                     <tr>
                                         <td style="display: none;">{{ $inscripcion->idd }}</td>
                                         <td>{{ ucwords($inscripcion->ciudadano) }} {{' '}} {{ ucwords($inscripcion->ap) }} {{' '}} {{ ucwords($inscripcion->am) }}</td>
-                                        <td>{{ ucwords($inscripcion->cargo) }}</td>
-                                        <td>{{ ucwords($inscripcion->grupo) }}</td>
+                                        <td>{{ $inscripcion->cargo }}</td>
+                                        <td>{{ $inscripcion->grupo }}</td>
                                         <td>
                                             @if($inscripcion->ff < now())
-                                                    {{ ucwords('0 Días')}}
+                                                    {{ '0 Días'}}
+                                            @elseif ($inscripcion->fi > now())
+                                                @php
+                                                    $fechaRestanteIniciar = \Carbon\Carbon::parse($inscripcion->fi)->diff(now());
+                                                    $mesesIniciar = $fechaRestanteIniciar->format('%m');
+                                                    $diasIniciar = $fechaRestanteIniciar->format('%d');
+                                                @endphp
+                                                    {{ $mesesIniciar . ' meses y '. $diasIniciar . ' días para comenzar el cargo' }}
                                             @else
                                                 @php
                                                     $fechaRestante = \Carbon\Carbon::parse(now())->diff($inscripcion->ff);
                                                     $meses = $fechaRestante->format('%m');
                                                     $dias = $fechaRestante->format('%d');
                                                 @endphp
-                                                    {{ ucwords($meses . ' meses y '. $dias . ' días') }}
+                                                    {{ $meses . ' meses y '. $dias . ' días' }}
                                             @endif
                                         </td>
                                         <td class="text-left">

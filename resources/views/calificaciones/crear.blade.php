@@ -83,8 +83,8 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" style="float: right;" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" style="float: right; margin-right: 10px;" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                     </form>

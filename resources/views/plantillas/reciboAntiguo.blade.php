@@ -52,7 +52,7 @@ height: 2cm;
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->
 <main>
     <br>
-    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha}}.</>
+    <h4 ALIGN=RIGHT>SANTO DOMINGO TLALTINANGO, STGO. SUCHILQUITONGO, ETLA, OAX, A {{$fecha_creacion}}.</>
     <br>
     <br>
     <h4 ALIGN=RIGHT>BUENO POR ${{$cantidad_num}}.00</>

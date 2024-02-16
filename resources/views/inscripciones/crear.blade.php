@@ -103,9 +103,15 @@
                                         <tr>
                                             <td style="display: none;">{{ $grupo->id }}</td>
                                             <td>{{ ucwords($grupo->nombre) }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($grupo->fecha_inicio)->format('d-m-Y') }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($grupo->fecha_fin)->format('d-m-Y') }}</td>
-                                            <td>{{ ucwords($grupo->nom_cargos) }}</td>
+                                            @php
+                                            $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $grupo->fecha_inicio);
+                                            $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                                            $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $grupo->fecha_fin);
+                                            $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
+                                            @endphp
+                                            <td>{{ $fechaInicioEnPalabras }}</td>
+                                            <td>{{ $fechaFinEnPalabras }}</td>
+                                            <td>{{ $grupo->nom_cargos }}</td>
                                             <td>
                                                 <!-- Agrega aquí tus acciones si es necesario -->
                                                 <button type="submit" class="btn btn-info" name="inscribir" value="{{ $grupo->id }}">

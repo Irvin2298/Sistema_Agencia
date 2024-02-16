@@ -94,13 +94,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fecha_inicio">Fecha de inicio:<span class="required text-danger">*</span></label>
-                                    <input type="date" name="fecha_inicio" class="form-control" min="{{ \Carbon\Carbon::today()->format('Y-m-d') }}" required>
+                                    <input type="date" id="fecha_inicio{{$cargo->id}}" name="fecha_inicio" class="form-control" min="{{ \Carbon\Carbon::today()->format('Y-m-d') }}" onchange="establecerFechaMinima({{$cargo->id}})" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="fecha_fin">Fecha fin:<span class="required text-danger">*</span></label>
-                                    <input type="date" name="fecha_fin" class="form-control"  min="{{ \Carbon\Carbon::today()->addDays(3)->format('Y-m-d') }}" required>
+                                    <input type="date" id="fecha_fin{{$cargo->id}}" name="fecha_fin" class="form-control" required>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -110,8 +110,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="button" style="float: right;" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                <button type="submit" style="float: right; margin-right: 10px;" class="btn btn-primary">Guardar</button>
+                                
                             </div>
                         </div>
                     </form>
@@ -148,4 +149,17 @@
         }
     });
 </script>
+
+<script>
+    function establecerFechaMinima(id) {
+        var fechaInicio = new Date(document.getElementById("fecha_inicio"+id).value);
+        // Agregar 7 días a la fecha de inicio
+        fechaInicio.setDate(fechaInicio.getDate() + 7);
+
+        // Formatear la nueva fecha como yyyy-mm-dd (formato aceptado por input type="date")
+        var nuevaFechaMinima = fechaInicio.toISOString().slice(0, 10);
+        document.getElementById("fecha_fin"+id).setAttribute("min", nuevaFechaMinima);
+    }
+</script>
+
 @endsection

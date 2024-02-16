@@ -15,6 +15,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\GrupoController;
 use App\Http\Controllers\DocumentoController;
 use App\Http\Controllers\DocumentoGeneradoController;
+use App\Http\Controllers\ReciboGeneradoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +41,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('/documentos/documentos_generados', [App\Http\Controllers\DocumentoGeneradoController::class, 'index'])->name('index');
 
+Route::get('/documentos/recibos_generados', [App\Http\Controllers\ReciboGeneradoController::class, 'index'])->name('index');
+
 Route::post('agenda/eliminar/{id}',[AgendaController::class, 'eliminar'])->name('agenda.eliminar');
 
 Route::post('agenda/actualizar/',[AgendaController::class, 'actualizar'])->name('agenda.actualizar');
@@ -49,6 +52,8 @@ Route::post('agenda/drag_drop/',[AgendaController::class, 'drag_drop'])->name('a
 Route::post('ciudadanos/eliminarId/{id}',[CiudadanoController::class, 'eliminarId'])->name('ciudadanos.eliminar');
 
 Route::post('documentos/nombramientos/eliminarId/{id}',[DocumentoGeneradoController::class, 'eliminarId'])->name('documentosGenerados.eliminar');
+
+Route::post('documentos/recibos/eliminarId/{id}',[ReciboGeneradoController::class, 'eliminarId'])->name('recibosGenerados.eliminar');
 
 Route::post('cargos/eliminar/{id}',[CargoController::class, 'eliminar'])->name('cargos.eliminar');
 
@@ -65,9 +70,13 @@ Route::get('documentos/constancia/{idd}',[CalificacionController::class, 'crearC
 
 Route::get('documentos/documentos_generados',[DocumentoGeneradoController::class, 'index'])->name('documentosGenerados.index');
 
+Route::get('documentos/recibos_generados',[ReciboGeneradoController::class, 'index'])->name('recibosGenerados.index');
+
 Route::post('documentos/nombramiento',[DocumentoController::class, 'crearNombramiento'])->name('documentos.crearNombramiento');
 
 Route::get('documentos/nombramiento/{id}',[DocumentoGeneradoController::class, 'crearNombramiento'])->name('documentosGenerados.crearNombramiento');
+
+Route::get('documentos/recibo/{id}',[ReciboGeneradoController::class, 'crearRecibo'])->name('recibosGenerados.crearRecibo');
 
 // Route::post('/mark-as-read', 'AgendaController@markNotificacion')->name('markNotificacion');
 
@@ -94,6 +103,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('grupos', GrupoController::class);
     Route::resource('documentos', DocumentoController::class);
     Route::resource('documentos/nombramientos_generados', DocumentoGeneradoController::class);
+    Route::resource('documentos/recibos_generados', ReciboGeneradoController::class);
 });
 
 //Ruta para marcar una notificacion como leída

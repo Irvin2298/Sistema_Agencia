@@ -56,7 +56,7 @@
                                     <tr>
                                         <td style="display: none;">{{ $inscripcion->idd }}</td>
                                         <td>{{ ucwords($inscripcion->ciudadano) }} {{' '}} {{ ucwords($inscripcion->ap) }} {{' '}} {{ ucwords($inscripcion->am) }}</td>
-                                        <td>{{ ucwords($inscripcion->cargo) }}</td>
+                                        <td>{{ $inscripcion->cargo }}</td>
                                         <td>
                                             @if($inscripcion->apro == 1)
                                                 <span class="badge badge-success">Aprobado</span>
@@ -108,7 +108,7 @@
                 <h6 class="modal-title">Evaluar el cargo del ciudadano:</h6>
                 <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($inscripcion->ciudadano) }} {{ ucwords($inscripcion->ap) }} {{ ucwords($inscripcion->am) }}</H5>
                 <h6 class="modal-title">Quien desempeñó el cargo de:</h6>
-                <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($inscripcion->cargo) }}</H5>
+                <H5 class="modal-title" style="color: #0000ffc2;">{{ $inscripcion->cargo }}</H5>
                 <h6 class="modal-title">En el periodo comprendido del:</h6>
                 @php
                 $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->fi);
@@ -116,7 +116,7 @@
                 $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->ff);
                 $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
                 @endphp
-                <H5 class="modal-title" style="color: #0000ffc2;">{{ ucwords($fechaInicioEnPalabras) }} al {{ ucwords($fechaFinEnPalabras) }}</H5>
+                <H5 class="modal-title" style="color: #0000ffc2;">{{ $fechaInicioEnPalabras }} al {{ $fechaFinEnPalabras }}</H5>
                 <form action="{{ route('calificaciones.update',$inscripcion->idd) }}" method="POST">
                     @csrf
                     <div class="row">
@@ -137,8 +137,8 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" style="float: right;" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="submit" style="float: right; margin-right: 10px;" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>
                 </form>

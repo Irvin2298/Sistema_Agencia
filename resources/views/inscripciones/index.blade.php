@@ -34,11 +34,11 @@
                                         <td>{{ ucwords($inscripcion->cargo) }}</td>
                                         <td>{{ ucwords($inscripcion->grupo) }}</td>
                                         <td>
-                                            @if($inscripcion->fi < now())
+                                            @if($inscripcion->ff < now())
                                                     {{ ucwords('0 Días')}}
                                             @else
                                                 @php
-                                                    $fechaRestante = \Carbon\Carbon::parse($inscripcion->fi)->diff($inscripcion->ff);
+                                                    $fechaRestante = \Carbon\Carbon::parse(now())->diff($inscripcion->ff);
                                                     $meses = $fechaRestante->format('%m');
                                                     $dias = $fechaRestante->format('%d');
                                                 @endphp
@@ -93,8 +93,16 @@
             <div class="modal-body">
                 <h4>Información de la inscripción</h4>
                 <p><strong>Ciudadano:</strong> {{ ucwords($inscripcion->ciudadano) }} {{' '}} {{ ucwords($inscripcion->ap) }} {{' '}} {{ ucwords($inscripcion->am) }}</p>
-                <p><strong>Fecha de inicio:</strong> {{ $inscripcion->fi }}</p>
-                <p><strong>Fecha de fin:</strong> {{ $inscripcion->ff }}</p>
+                @php
+                $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->fi);
+                $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                @endphp
+                <p><strong>Fecha de inicio:</strong> {{ $fechaInicioEnPalabras }}</p>
+                @php
+                $fechaFin = \Carbon\Carbon::createFromFormat('Y-m-d', $inscripcion->ff);
+                $fechaFinEnPalabras = $fechaFin->isoFormat('LL');
+                @endphp
+                <p><strong>Fecha de fin:</strong> {{ $fechaFinEnPalabras }}</p>
                 <p><strong>Cargo inscrito:</strong> {{ $inscripcion->cargo }}</p>
                 <p><strong>Grupo inscrito:</strong> {{ $inscripcion->grupo }}</p>
                 <!-- Agrega más detalles aquí -->

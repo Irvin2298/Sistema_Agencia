@@ -43,6 +43,11 @@ class SeederTablaPermisos extends Seeder
             'crear-inscripcion',
             'editar-inscripcion',
             'borrar-inscripcion',
+            //permisos sobre la tabla inscripcion
+            'ver-grupo',
+            'crear-grupo',
+            'editar-grupo',
+            'borrar-grupo',
         ];
 
         foreach($permisos as $permiso) {

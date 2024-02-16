@@ -78,7 +78,7 @@
                                     <td>{{ ucwords($ciudadano->sexo) }}</td>
                                     <td>
                                         <!-- <form action="{{ route('ciudadanos.destroy',$ciudadano->id) }}" method="POST"> -->
-                                            @can('editar-ciudadanos')
+                                            @can('editar-ciudadano')
                                             <a class="btn btn-info" href="{{ route('ciudadanos.edit',$ciudadano->id) }}"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
                                             @endcan
                                             @php

@@ -22,7 +22,11 @@
                                             <a href="#JavaScript">
                                                 <h2>{{ $notification->data['nombre'] }}</h2>
                                                 <p>{{ $notification->data['descripcion'] }}</p>
-                                                <p>{{ $notification->data['fechaInicio'] }}</p>
+                                                @php
+                                                $fechaInicio = \Carbon\Carbon::createFromFormat('Y-m-d', $notification->data['fechaInicio']);
+                                                $fechaInicioEnPalabras = $fechaInicio->isoFormat('LL');
+                                                @endphp
+                                                <p>{{ $fechaInicioEnPalabras }}</p>
                                                 <p>{{ $notification->created_at->diffForHumans() }}</p>
                                                 <btn class="btn btn-primary" onclick="location.href= '{{ route('marcarunanoti', $notification->id) }}'"  title="Marcar notificación como leída">
                                                         Marcar como leída

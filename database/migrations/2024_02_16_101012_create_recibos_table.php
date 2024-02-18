@@ -21,6 +21,7 @@ class CreateRecibosTable extends Migration
             $table->integer('cantidad_numero');
             $table->string('cantidad_letra');
             $table->date('fecha');
+            $table->date('fecha_creacion');
             $table->string('concepto');
             $table->string('nombre_agente');
             $table->timestamps();

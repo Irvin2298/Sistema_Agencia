@@ -40,7 +40,7 @@
                                         $fechaCreacion = \Carbon\Carbon::createFromFormat('Y-m-d', $nombramiento->fecha_creación);
                                         $fechaCreacionEnPalabras = $fechaCreacion->isoFormat('LL');
                                         @endphp
-                                    <td>{{ ucwords($fechaCreacionEnPalabras) }}</td>
+                                    <td>{{ $fechaCreacionEnPalabras }}</td>
                                     <td>{{ ucwords($nombramiento->nombre_agente) }}</td>
                                     <td>
                                         

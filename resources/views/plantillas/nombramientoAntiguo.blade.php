@@ -70,7 +70,7 @@ height: 2cm;
     </p>
     <br>
     <h4><center>ATENTAMENTE</center></>
-    <h4><center>AGENTE MUNICIAPL</center></>
+    <h4><center>AGENTE MUNICIPAL</center></>
     <br>
     <p><center>________________________</center></p>
     <!-- <br> -->

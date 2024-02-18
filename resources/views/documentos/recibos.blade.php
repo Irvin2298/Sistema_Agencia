@@ -45,19 +45,19 @@
                                   <tr>
                                     <td style="display: none;">{{ $recibo->id }}</td>
                                     <td>{{ ucwords($recibo->nombre) }} {{ ucwords($recibo->apellido_paterno) }} {{ ucwords($recibo->apellido_materno) }}</td>
-                                    <td>{{ ucwords($recibo->cantidad_numero) }}</td>
+                                    <td>{{ $recibo->cantidad_numero }}</td>
                                     <td>{{ ucwords($recibo->cantidad_letra) }}</td>
                                     @php
                                         $fecha = \Carbon\Carbon::createFromFormat('Y-m-d', $recibo->fecha);
                                         $fechaEnPalabras = $fecha->isoFormat('LL');
                                     @endphp
-                                    <td>{{ ucwords($fechaEnPalabras) }}</td>
+                                    <td>{{ $fechaEnPalabras }}</td>
                                     @php
                                         $fechaCreacion = \Carbon\Carbon::createFromFormat('Y-m-d', $recibo->fecha_creacion);
                                         $fechaCreacionEnPalabras = $fechaCreacion->isoFormat('LL');
                                     @endphp
-                                    <td>{{ ucwords($fechaCreacionEnPalabras) }}</td>
-                                    <td>{{ ucwords($recibo->concepto) }}</td>
+                                    <td>{{ $fechaCreacionEnPalabras }}</td>
+                                    <td>{{ $recibo->concepto }}</td>
                                     <td>{{ ucwords($recibo->nombre_agente) }}</td>
                                     <td>
                                         

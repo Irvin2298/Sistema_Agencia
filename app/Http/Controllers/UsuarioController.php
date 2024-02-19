@@ -139,4 +139,11 @@ class UsuarioController extends Controller
         User::find($id)->delete();
         return redirect()->route('usuarios.index');
     }
+
+    public function eliminar($id)
+    {
+        DB::table('users')->whereId($id)->delete();
+
+        return redirect()->route('usuarios.index')->with('success', 'Usuario eliminado exitosamente.');
+    }
 }

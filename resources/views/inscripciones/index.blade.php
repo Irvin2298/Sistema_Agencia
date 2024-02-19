@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Inscripciones
+@endsection
 @section('content')
 <section class="section">
   <div class="section-header">
@@ -33,23 +35,23 @@
                                         <td>{{ ucwords($inscripcion->ciudadano) }} {{' '}} {{ ucwords($inscripcion->ap) }} {{' '}} {{ ucwords($inscripcion->am) }}</td>
                                         <td>{{ $inscripcion->cargo }}</td>
                                         <td>{{ $inscripcion->grupo }}</td>
-                                        <td>
+                                        <td
                                             @if($inscripcion->ff < now())
-                                                    {{ '0 Días'}}
+                                                style="color: #10E30A;">    {{ '0 Días'}}
                                             @elseif ($inscripcion->fi > now())
                                                 @php
                                                     $fechaRestanteIniciar = \Carbon\Carbon::parse($inscripcion->fi)->diff(now());
                                                     $mesesIniciar = $fechaRestanteIniciar->format('%m');
                                                     $diasIniciar = $fechaRestanteIniciar->format('%d');
                                                 @endphp
-                                                    {{ $mesesIniciar . ' meses y '. $diasIniciar . ' días para comenzar el cargo' }}
+                                                style="color: red;">    {{ $mesesIniciar . ' meses y '. $diasIniciar . ' días para comenzar el cargo' }}
                                             @else
                                                 @php
                                                     $fechaRestante = \Carbon\Carbon::parse(now())->diff($inscripcion->ff);
                                                     $meses = $fechaRestante->format('%m');
                                                     $dias = $fechaRestante->format('%d');
                                                 @endphp
-                                                    {{ $meses . ' meses y '. $dias . ' días' }}
+                                                style="color: blue;">    {{ $meses . ' meses y '. $dias . ' días' }}
                                             @endif
                                         </td>
                                         <td class="text-left">
@@ -58,7 +60,7 @@
                                                @php
                                                     $date=date("Y-m-d");
                                                @endphp
-                                                @if($date <= $inscripcion->fi)
+                                                @if($date < $inscripcion->ff)
                                                     @can('editar-inscripcion')
                                                     <a class="btn btn-info" href="{{ route('inscripcion.edit', $inscripcion->idd) }}" title="Editar inscripción">
                                                         <i class="fa fa-pencil" aria-hidden="true"></i> Editar

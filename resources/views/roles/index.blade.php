@@ -34,9 +34,9 @@
                                         @endcan
 
                                         @can('borrar-rol')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-                                                {!! Form::submit('Borrar',['class' => 'btn btn-danger']) !!}
-                                            {!! Form::close() !!}
+                                            <button type="submit" class="btn btn-danger" onclick="fntDeleteCargo('{{ $role->id }}', '{{ $role->name }}')">
+                                                <i class="fa fa-trash" aria-hidden="true"></i> Borrar
+                                            </button>
                                         @endcan
                                     </td>
                                 </tr>
@@ -80,3 +80,42 @@
 });
     </script>
 @endsection
+
+@section('scripts')
+    @if(session('success'))
+        <script>
+            Swal.fire(
+                "Felicidades!",
+                "{{ Session::get('success') }}",
+                "success"
+            )
+        </script>
+    @endif
+
+    <script>
+        function fntDeleteCargo(usuarioId, nombre){
+            Swal.fire({
+                title: '¿Deseas eliminar el rol ' + nombre + '?',
+                text: "Ya no podrás visualizar este rol en la tabla.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar',
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "roles/eliminar/"+usuarioId,
+                });
+                window.location="http://127.0.0.1:8000/roles";
+            }
+        })
+        }
+    </script>
+@endsection
+
+
+
+

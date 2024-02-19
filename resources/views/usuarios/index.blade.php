@@ -42,10 +42,17 @@
 
                                     <td>
                                       <a class="btn btn-info" href="{{ route('usuarios.edit',$usuario->id) }}" title="Editar usuario"><i class="fa fa-pencil" aria-hidden="true"></i> Editar</a>
+                                      @php
+                                                $canDelete = Gate::allows('borrar-grupo');
+                                            @endphp
+                                      @if ($canDelete)
+                                                    @csrf
+                                                    @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger" onclick="fntDeleteCargo('{{ $usuario->id }}', '{{ $usuario->name }}')">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i> Borrar
+                                                        </button>
 
-                                      {!! Form::open(['method' => 'DELETE','route' => ['usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
-                                          {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
-                                      {!! Form::close() !!}
+                                                @endif
                                     </td>
                                   </tr>
                                 @endforeach
@@ -86,3 +93,42 @@
 });
     </script>
 @endsection
+
+@section('scripts')
+    @if(session('success'))
+        <script>
+            Swal.fire(
+                "Felicidades!",
+                "{{ Session::get('success') }}",
+                "success"
+            )
+        </script>
+    @endif
+
+    <script>
+        function fntDeleteCargo(usuarioId, nombre){
+            Swal.fire({
+                title: '¿Deseas eliminar el usuario ' + nombre + '?',
+                text: "Ya no podrás visualizar este usuario en la tabla.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, eliminar',
+                cancelButtonText: "Cancelar"
+            }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: "post",
+                    url: "usuarios/eliminar/"+usuarioId,
+                });
+                window.location="http://127.0.0.1:8000/usuarios";
+            }
+        })
+        }
+    </script>
+@endsection
+
+
+
+

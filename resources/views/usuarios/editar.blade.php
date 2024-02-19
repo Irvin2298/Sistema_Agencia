@@ -56,8 +56,8 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <button type="submit" class="btn btn-primary">Guardar</button>
-                                <a href="/usuarios" class="btn btn-warning">Cancelar</a>
+                                <a href="/usuarios" style="float: right;" class="btn btn-warning">Cancelar</a>
+                                <button type="submit" style="float: right; margin-right: 10px;" class="btn btn-primary">Guardar</button>
                             </div>
                         </div>
                         {!! Form::close() !!}

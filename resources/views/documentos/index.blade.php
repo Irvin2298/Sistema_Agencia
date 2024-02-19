@@ -1,5 +1,7 @@
 @extends('layouts.appDocumentos')
-
+@section('title')
+    Documentos
+@endsection
 @section('content')
 
     <section class="section">

@@ -1,6 +1,6 @@
 @extends('layouts.auth_app')
 @section('title')
-    Forgot Password
+    Contraseña olvidada
 @endsection
 @section('content')
     <div class="card card-primary">

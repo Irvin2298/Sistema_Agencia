@@ -89,6 +89,10 @@ Route::post('guardarGrupo/{cargo}', [GrupoController::class, 'store'])
     ->name('storeGrupo');
 
 Route::post('grupos/eliminar/{id}',[GrupoController::class, 'eliminar'])->name('grupos.eliminar');
+
+Route::post('usuarios/eliminar/{id}',[UsuarioController::class, 'eliminar'])->name('usuarios.eliminar');
+
+Route::post('roles/eliminar/{id}',[RolController::class, 'eliminar'])->name('roles.eliminar');
 //y creamos un grupo de rutas protegidas para los controladores
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RolController::class);

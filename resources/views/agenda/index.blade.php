@@ -1,5 +1,7 @@
 @extends('layouts.appAgenda')
-
+@section('title')
+    Agenda
+@endsection
 @section('content')
 
 <div class="alert alert-danger alert-dismissible fade show text-center" role="alert" style="display: none;">

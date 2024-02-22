@@ -53,10 +53,11 @@
                             <table class="table table-striped mt-2 table_id" id="miTabla2">
                               <thead style="background-color:#6777ef">
                                   <th style="display: none; cursor: pointer;">ID</th>
-                                  <th style="color:#fff; cursor: pointer;">Nombre <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Apellido Paterno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Apellido Materno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
-                                  <th style="color:#fff; cursor: pointer;">Curp  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">Nombre completo<i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <!-- <th style="color:#fff; cursor: pointer;">Apellido Paterno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">Apellido Materno  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th> -->
+                                  <th style="color:#fff; cursor: pointer;">Fecha de nacimiento  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
+                                  <th style="color:#fff; cursor: pointer;">CURP  <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff; cursor: pointer;">Estado <i class="fas fa-caret-square-o-down" aria-hidden="true"></i></th>
                                   <th style="color:#fff;">Sexo</th>
                                   <th style="color:#fff;" class="text-center">Acciones</th>
@@ -65,9 +66,10 @@
                                 @foreach ($ciudadanos as $ciudadano)
                                   <tr>
                                     <td style="display: none;">{{ $ciudadano->id }}</td>
-                                    <td>{{ ucwords($ciudadano->nombre) }}</td>
-                                    <td>{{ ucwords($ciudadano->apellido_p) }}</td>
-                                    <td>{{ ucwords($ciudadano->apellido_m) }}</td>
+                                    <td>{{ ucwords($ciudadano->nombre)}} {{ ucwords($ciudadano->apellido_p)}} {{ ucwords($ciudadano->apellido_m)}}</td>
+                                    <!-- <td>{{ ucwords($ciudadano->apellido_p) }}</td>
+                                    <td>{{ ucwords($ciudadano->apellido_m) }}</td> -->
+                                    <td>{{ ucwords($ciudadano->fecha_nacimiento) }}</td>
                                     <td>{{ ucwords($ciudadano->curp) }}</td>
                                     <td>
                                         @if ($ciudadano->estado==1)
@@ -123,20 +125,22 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [8, 10, 15],
-        [8, 10, 15]
+        [10, 15, 20],
+        [10, 15, 20]
     ],
 
     columns: [
         { Id: 'Id' },
         { Nombre: 'Nombre' },
-        { Apellido_p: 'Apellido_p' },
-        { Apellido_m: 'Apellido_m' },
+        // { Apellido_p: 'Apellido_p' },
+        // { Apellido_m: 'Apellido_m' },
+        { Fecha_n: 'Fecha_n' },
         { Estado: 'Estado' },
         { Sexo: 'Sexo' },
         { CURP: 'CURP' },
         { Acciones: 'Acciones' }
     ],
+    order: [[2, 'asc']],
 
     language: {
         url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',

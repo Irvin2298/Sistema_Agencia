@@ -14,7 +14,7 @@
                       <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- Botón para crear nuevo ciudadano -->
+                                <!-- Botón para crear nuevo cargo -->
                                 @can('crear-cargo')
                                     <a class="btn btn-warning" href="{{ route('cargos.create') }}" title="Crear nuevo Cargo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo Cargo</a>
                                  @endcan
@@ -125,8 +125,8 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [8, 10, 15],
-        [8, 10, 15]
+        [10, 15, 20],
+        [10, 15, 20]
     ],
 
     columns: [

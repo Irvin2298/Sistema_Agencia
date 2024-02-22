@@ -104,8 +104,8 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [8, 10, 15],
-        [8, 10, 15]
+        [10, 15, 20],
+        [10, 15, 20]
     ],
 
     columns: [

@@ -14,7 +14,7 @@
                       <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- Botón para crear nuevo ciudadano -->
+                                <!-- Botón para crear nuevo grupo -->
                                 @can('crear-grupo')
                                     <a class="btn btn-warning" href="{{ route('grupos.create') }}" title="Crear nuevo Grupo"><i class="fa fa-plus" aria-hidden="true"></i> Nuevo grupo</a>
                                  @endcan
@@ -138,8 +138,8 @@
     <script>
         new DataTable('#miTabla2', {
     lengthMenu: [
-        [3, 5, 15],
-        [3, 5, 15]
+        [10, 15, 20],
+        [10, 15, 20]
     ],
 
     columns: [

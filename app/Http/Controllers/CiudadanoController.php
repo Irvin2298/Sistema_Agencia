@@ -48,8 +48,12 @@ class CiudadanoController extends Controller
                 }
             }
         }
-        $ciudadanos = $query->get();
+        // $ciudadanos = $query->orderBy('fecha_nacimiento', 'asc')->get();
         // $ciudadanos = Ciudadano::all();
+        $ciudadanos = Ciudadano::orderBy('fecha_nacimiento', 'asc')->get();
+        foreach ($ciudadanos as $ciudadano) {
+            $ciudadano->fecha_nacimiento = \Carbon\Carbon::parse($ciudadano->fecha_nacimiento)->format('Y-m-d');
+        }
         return view('ciudadanos.index', compact('ciudadanos'));
     }
 

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    Usuarios
+@endsection
 @section('content')
 <section class="section">
   <div class="section-header">
@@ -75,8 +77,8 @@
     <script>
         new DataTable('#miTabla', {
     lengthMenu: [
-        [2, 5, 10],
-        [2, 5, 10]
+        [10, 15, 20],
+        [10, 15, 20]
     ],
 
     columns: [

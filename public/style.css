@@ -646,6 +646,30 @@ img {
     border-color: #2677e7; }
   .single-testimonial-area:hover .testimonial-content h5 {
     color: #2677e7; }
+    /* Galleri */
+    .single-testimonial-area .testimonial-thumb a {
+      position: relative;
+      z-index: 1;
+      @flex (0 0 30%);
+      max-width: 30%;
+      margin-bottom: 15px;
+      cursor: zoom-in; }
+      .single-testimonial-area .testimonial-thumb a::after {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        content: '';
+        background-color: rgba(83, 184, 239, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition-duration: 500ms;
+        transition-duration: 500ms; }
+        .single-testimonial-area .testimonial-thumb a:hover::after {
+        opacity: 1;
+        visibility: visible; }
+        
 
 /* Top Popular Course Area CSS */
 .single-top-popular-course {

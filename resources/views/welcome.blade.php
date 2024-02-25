@@ -21,25 +21,14 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+        <style>
+            .icono-blanco {
+            color: white;
+            }
+        </style>
         <link rel="stylesheet" href="{{ asset('style.css') }}">
     </head>
     <body>
-    <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Inicio</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Iniciar sesión</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Regístrate</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-        </div> -->
-            
         <div id="preloader">
         <i class="circle-preloader"></i>
     </div>
@@ -54,7 +43,7 @@
                     <div class="col-12 h-100">
                         <div class="header-content h-100 d-flex align-items-center justify-content-between">
                             <div class="academy-logo">
-                                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                                <a href="#"><img src="img/core-img/logo.png" alt=""></a>
                             </div>
                             <div class="login-content">
                             @if (Route::has('login'))
@@ -102,47 +91,6 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul>
-                                    <!-- <li><a href="index.html">Home</a></li>
-                                    <li><a href="#">Pages</a>
-                                        <ul class="dropdown">
-                                            <li><a href="index.html">Home</a></li>
-                                            <li><a href="about-us.html">About Us</a></li>
-                                            <li><a href="course.html">Course</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                            <li><a href="elements.html">Elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Mega Menu</a>
-                                        <div class="megamenu">
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">Home</a></li>
-                                                <li><a href="#">Services &amp; Features</a></li>
-                                                <li><a href="#">Accordions and tabs</a></li>
-                                                <li><a href="#">Menu ideas</a></li>
-                                                <li><a href="#">Students Gallery</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">Home</a></li>
-                                                <li><a href="#">Services &amp; Features</a></li>
-                                                <li><a href="#">Accordions and tabs</a></li>
-                                                <li><a href="#">Menu ideas</a></li>
-                                                <li><a href="#">Students Gallery</a></li>
-                                            </ul>
-                                            <ul class="single-mega cn-col-4">
-                                                <li><a href="#">Home</a></li>
-                                                <li><a href="#">Services &amp; Features</a></li>
-                                                <li><a href="#">Accordions and tabs</a></li>
-                                                <li><a href="#">Menu ideas</a></li>
-                                                <li><a href="#">Students Gallery</a></li>
-                                            </ul>
-                                            <div class="single-mega cn-col-4">
-                                                <img src="img/bg-img/bg-1.jpg" alt="">
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li><a href="about-us.html">About Us</a></li>
-                                    <li><a href="course.html">Course</a></li> -->
                                     <li><a href="#">Teléfono de contacto</a></li>
                                 </ul>
                             </div>
@@ -167,14 +115,13 @@
         <div class="hero-slides owl-carousel">
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/bg-1.jpg);">
+            <div class="single-hero-slide bg-img" width="50%" style="background-image: url(img/bg-img/iglesia3.jpeg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <div class="hero-slides-content">
-                                <h4 data-animation="fadeInUp" data-delay="100ms">All the courses you need</h4>
-                                <h2 data-animation="fadeInUp" data-delay="400ms">Wellcome to our <br>Online University</h2>
-                                <a href="#" class="btn academy-btn" data-animation="fadeInUp" data-delay="700ms">Read More</a>
+                                <h4 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="100ms">Cuenta con una iglesia</h4>
+                                <h2 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="400ms">Católica para los habitantes <br>de nuestra comunidad</h2>
                             </div>
                         </div>
                     </div>
@@ -182,14 +129,27 @@
             </div>
 
             <!-- Single Hero Slide -->
-            <div class="single-hero-slide bg-img" style="background-image: url(img/bg-img/bg-2.jpg);">
+            <div class="single-hero-slide bg-img" width="50%" style="background-image: url(img/bg-img/festividad.jpg);">
                 <div class="container h-100">
                     <div class="row h-100 align-items-center">
                         <div class="col-12">
                             <div class="hero-slides-content">
-                                <h4 data-animation="fadeInUp" data-delay="100ms">All the courses you need</h4>
-                                <h2 data-animation="fadeInUp" data-delay="400ms">Wellcome to our <br>Online University</h2>
-                                <a href="#" class="btn academy-btn" data-animation="fadeInUp" data-delay="700ms">Read More</a>
+                                <h4 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="100ms">Santo Domingo Tlaltinango</h4>
+                                <h2 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="400ms">Comunidad Llena <br>De Tradiciones</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Hero Slide -->
+            <div class="single-hero-slide bg-img" width="50%" style="background-image: url(img/bg-img/agencia.jpeg);">
+                <div class="container h-100">
+                    <div class="row h-100 align-items-center">
+                        <div class="col-12">
+                            <div class="hero-slides-content">
+                                <h4 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="100ms">Agencia Municipal</h4>
+                                <h2 style="color: rgb(29, 203, 218); text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;" data-animation="fadeInUp" data-delay="400ms">Para el progreso de <br>Nuestra Comunidad</h2>
                             </div>
                         </div>
                     </div>
@@ -209,22 +169,22 @@
                             <!-- Single Top Features -->
                             <div class="col-12 col-md-4">
                                 <div class="single-top-features d-flex align-items-center justify-content-center">
-                                    <i class="icon-agenda-1"></i>
-                                    <h5>Online Courses</h5>
+                                    <i class="fas fa-book"></i>
+                                    <h5>Centros Religiosos</h5>
                                 </div>
                             </div>
                             <!-- Single Top Features -->
                             <div class="col-12 col-md-4">
                                 <div class="single-top-features d-flex align-items-center justify-content-center">
-                                    <i class="icon-assistance"></i>
-                                    <h5>Amazing Teachers</h5>
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <h5>Centros Educativos</h5>
                                 </div>
                             </div>
                             <!-- Single Top Features -->
                             <div class="col-12 col-md-4">
                                 <div class="single-top-features d-flex align-items-center justify-content-center">
-                                    <i class="icon-telephone-3"></i>
-                                    <h5>Great Support</h5>
+                                    <i class="fas fa-users"></i>
+                                    <h5>Diversidad Cultural</h5>
                                 </div>
                             </div>
                         </div>
@@ -243,11 +203,11 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="300ms">
                         <div class="course-icon">
-                            <i class="icon-id-card"></i>
+                            <i class="fas fa-stethoscope"></i>
                         </div>
                         <div class="course-content">
-                            <h4>Business School</h4>
-                            <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
+                            <h4>Casa de salud</h4>
+                            <p>Es utilizada para aplicar vacunas a nuestros ciudadanos.</p>
                         </div>
                     </div>
                 </div>
@@ -255,11 +215,11 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="400ms">
                         <div class="course-icon">
-                            <i class="icon-worldwide"></i>
+                            <i class="fas fa-heart"></i>
                         </div>
                         <div class="course-content">
-                            <h4>Marketing</h4>
-                            <p>Lacinia, lacinia la cus non, fermen tum nisi.</p>
+                            <h4>Día de las madres</h4>
+                            <p>Festejamos a las mamás en su día.</p>
                         </div>
                     </div>
                 </div>
@@ -267,47 +227,11 @@
                 <div class="col-12 col-sm-6 col-lg-4">
                     <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="500ms">
                         <div class="course-icon">
-                            <i class="icon-map"></i>
+                            <i class="fas fa-child"></i>
                         </div>
                         <div class="course-content">
-                            <h4>Photography</h4>
-                            <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Course Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="600ms">
-                        <div class="course-icon">
-                            <i class="icon-like"></i>
-                        </div>
-                        <div class="course-content">
-                            <h4>Social Media</h4>
-                            <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Course Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="course-icon">
-                            <i class="icon-responsive"></i>
-                        </div>
-                        <div class="course-content">
-                            <h4>Development</h4>
-                            <p>Lacinia, lacinia la cus non, fermen tum nisi.</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Single Course Area -->
-                <div class="col-12 col-sm-6 col-lg-4">
-                    <div class="single-course-area d-flex align-items-center mb-100 wow fadeInUp" data-wow-delay="800ms">
-                        <div class="course-icon">
-                            <i class="icon-message"></i>
-                        </div>
-                        <div class="course-content">
-                            <h4>Design</h4>
-                            <p>Cras vitae turpis lacinia, lacinia la cus non, fermentum nisi.</p>
+                            <h4>Día del niño</h4>
+                            <p>Porque los pequeños son el futuro, celebramos juntos su día.</p>
                         </div>
                     </div>
                 </div>
@@ -317,13 +241,13 @@
     <!-- ##### Course Area End ##### -->
 
     <!-- ##### Testimonials Area Start ##### -->
-    <div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url(img/bg-img/bg-2.jpg);">
+    <div class="testimonials-area section-padding-100 bg-img bg-overlay" style="background-image: url(img/bg-img/iglesia3.jpeg);">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-heading text-center mx-auto white wow fadeInUp" data-wow-delay="300ms">
-                        <span>our testimonials</span>
-                        <h3>See what our satisfied customers are saying about us</h3>
+                        <span>Nuestra población</span>
+                        <h3>Adéntrate en Santo Domingo Tlaltinango</h3>
                     </div>
                 </div>
             </div>
@@ -332,12 +256,12 @@
                 <div class="col-12 col-md-6">
                     <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="400ms">
                         <div class="testimonial-thumb">
-                            <img src="img/bg-img/t1.jpg" alt="">
+                            <img src="img/bg-img/preescolarImg.jpg" alt="">
                         </div>
                         <div class="testimonial-content">
-                            <h5>Great teachers</h5>
-                            <p>Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna.</p>
-                            <h6><span>Maria Smith,</span> Student</h6>
+                            <h5>Preescolar</h5>
+                            <p>Contamos con un jardín de niños dentro de la población para el desarrollo de nuestros niños, en el cual laboran maestros de una excelente calidad para un mejor desarrollo de la población.</p>
+                            <h6>Jardín de Niños<span> Carmen Ramos del Río</span></h6>
                         </div>
                     </div>
                 </div>
@@ -345,12 +269,12 @@
                 <div class="col-12 col-md-6">
                     <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="500ms">
                         <div class="testimonial-thumb">
-                            <img src="img/bg-img/t2.jpg" alt="">
+                            <img src="img/bg-img/primariaImg.jpg" alt="">
                         </div>
                         <div class="testimonial-content">
-                            <h5>Easy and user friendly courses</h5>
-                            <p>Retiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul.</p>
-                            <h6><span>Shawn Gaines,</span> Student</h6>
+                            <h5>Escuela primaria</h5>
+                            <p>Dentro de nuestra comunidad se encuentra una escuela primaria, en la cual los niños de nuestra comunidad reciben el aprendizaje necesario para que se puedan superar y desarrollar mejor en el hámbito escolar para la siguiente etapa de su educación.</p>
+                            <h6>Escuela Primaria <span>Abraham Castellanos</span></h6>
                         </div>
                     </div>
                 </div>
@@ -358,12 +282,12 @@
                 <div class="col-12 col-md-6">
                     <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="600ms">
                         <div class="testimonial-thumb">
-                            <img src="img/bg-img/t3.jpg" alt="">
+                            <img src="img/bg-img/panteonImg.jpg" alt="">
                         </div>
                         <div class="testimonial-content">
-                            <h5>I just love the courses here</h5>
-                            <p>Nec odio vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibulum est mat tis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio ves tibul.</p>
-                            <h6><span>Ross Cooper,</span> Student</h6>
+                            <h5>Panteón de la comunidad</h5>
+                            <p>Contamos con un panteón dentro de la comunidad al servicio de los ciudadanos, esto con el fin de que se le brinden los servicios a sus familiares tras su fallecimiento y poder tenerlos cerca aún después de muertos.</p>
+                            <h6>Panteón de <span>Santo Domingo Tlaltinango</span></h6>
                         </div>
                     </div>
                 </div>
@@ -371,20 +295,13 @@
                 <div class="col-12 col-md-6">
                     <div class="single-testimonial-area mb-100 d-flex wow fadeInUp" data-wow-delay="700ms">
                         <div class="testimonial-thumb">
-                            <img src="img/bg-img/t4.jpg" alt="">
+                            <img src="img/bg-img/santoImg.jpg" alt="">
                         </div>
                         <div class="testimonial-content">
-                            <h5>One good academy</h5>
-                            <p>Vestibulum est mattis effic iturut magna. Pellentesque sit am et tellus blandit. Etiam nec odio vestibul. Etiam nec odio vestibu lum est mat tis effic iturut magna. Pellentesque sit amet tellus blandit. Etiam nec odio ves tibul. Etiam nec odio vestibulum est mat tis effic iturut magnaNec odio vestibulum est mattis effic iturut magna.</p>
-                            <h6><span>James Williams,</span> Student</h6>
+                            <h5>Santo patrón</h5>
+                            <p>La fiesta patronal que se festeja en esta comunidad es en honor a Santo Domingo de Guzmán, debido a la historia que se tiene desde sus orígenes en nuestra comunidad.</p>
+                            <h6> Santo Patrón <span>Santo Domingo de Guzmán </span></h6>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="load-more-btn text-center wow fadeInUp" data-wow-delay="800ms">
-                        <a href="#" class="btn academy-btn">See More</a>
                     </div>
                 </div>
             </div>
@@ -400,11 +317,6 @@
             <div class="row">
                 <div class="col-12">
                     <div class="partners-logo d-flex align-items-center justify-content-between flex-wrap">
-                        <!-- <a href="#"><img src="img/clients-img/partner-1.png" alt=""></a>
-                        <a href="#"><img src="img/clients-img/partner-2.png" alt=""></a>
-                        <a href="#"><img src="img/clients-img/partner-3.png" alt=""></a>
-                        <a href="#"><img src="img/clients-img/partner-4.png" alt=""></a>
-                        <a href="#"><img src="img/clients-img/partner-5.png" alt=""></a> -->
                     </div>
                 </div>
             </div>
@@ -418,8 +330,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="cta-content d-flex align-items-center justify-content-between flex-wrap">
-                        <h3>Do you want to enrole at our Academy? Get in touch!</h3>
-                        <a href="#" class="btn academy-btn">See More</a>
+                        <h3>¿Qué esperar para visitar nuestra comunidad?</h3>
                     </div>
                 </div>
             </div>
@@ -438,28 +349,21 @@
                             <div class="widget-title">
                                 <a href="#"><img src="img/core-img/logo2.png" alt=""></a>
                             </div>
-                            <p>Cras vitae turpis lacinia, lacinia lacus non, fermentum nisi. Donec et sollicitudin est, in euismod erat. Ut at erat et arcu pulvinar cursus a eget.</p>
-                            <div class="footer-social-info">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-dribbble"></i></a>
-                                <a href="#"><i class="fa fa-behance"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                            </div>
+                            <p>Conoce Santo Domingo Tlaltinango y disfruta de sus tradiciones.</p>
                         </div>
                     </div>
                     <!-- Footer Widget Area -->
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="footer-widget mb-100">
                             <div class="widget-title">
-                                <h6>Usefull Links</h6>
+                                <h6>Agunas tradiciones</h6>
                             </div>
                             <nav>
                                 <ul class="useful-links">
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Services &amp; Features</a></li>
-                                    <li><a href="#">Accordions and tabs</a></li>
-                                    <li><a href="#">Menu ideas</a></li>
+                                    <li><a href="#">Fiesta patronal</a></li>
+                                    <li><a href="#">Festividad del día de muertos</a></li>
+                                    <li><a href="#">Día de las madres</a></li>
+                                    <li><a href="#">Día del niño</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -468,15 +372,18 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="footer-widget mb-100">
                             <div class="widget-title">
-                                <h6>Gallery</h6>
+                                <h6>Imágenes</h6>
                             </div>
                             <div class="gallery-list d-flex justify-content-between flex-wrap">
-                                <a href="img/bg-img/gallery1.jpg" class="gallery-img" title="Gallery Image 1"><img src="img/bg-img/gallery1.jpg" alt=""></a>
-                                <a href="img/bg-img/gallery2.jpg" class="gallery-img" title="Gallery Image 2"><img src="img/bg-img/gallery2.jpg" alt=""></a>
-                                <a href="img/bg-img/gallery3.jpg" class="gallery-img" title="Gallery Image 3"><img src="img/bg-img/gallery3.jpg" alt=""></a>
-                                <a href="img/bg-img/gallery4.jpg" class="gallery-img" title="Gallery Image 4"><img src="img/bg-img/gallery4.jpg" alt=""></a>
-                                <a href="img/bg-img/gallery5.jpg" class="gallery-img" title="Gallery Image 5"><img src="img/bg-img/gallery5.jpg" alt=""></a>
-                                <a href="img/bg-img/gallery6.jpg" class="gallery-img" title="Gallery Image 6"><img src="img/bg-img/gallery6.jpg" alt=""></a>
+                                <a href="img/bg-img/primaria2.jpeg" class="gallery-img" title="Primaria"><img src="img/bg-img/primaria.jpg" alt=""></a>
+                                <a href="img/bg-img/santo1.jpg" class="gallery-img" title="Santo Domingo"><img src="img/bg-img/santo1.jpg" alt=""></a>
+                                <a href="img/bg-img/santo2.jpg" class="gallery-img" title="Santo Domingo"><img src="img/bg-img/santo2.jpg" alt=""></a>
+                                <a href="img/bg-img/templo.jpg" class="gallery-img" title="Iglesia"><img src="img/bg-img/templo.jpg" alt=""></a>
+                                <a href="img/bg-img/templo2.jpg" class="gallery-img" title="Iglesia"><img src="img/bg-img/templo2.jpg" alt=""></a>
+                                <a href="img/bg-img/templo3.jpg" class="gallery-img" title="Iglesia"><img src="img/bg-img/templo3.jpg" alt=""></a>
+                                <a href="img/bg-img/panteon.jpeg" class="gallery-img" title="Panteón"><img src="img/bg-img/panteonImg.jpg" alt=""></a>
+                                <a href="img/bg-img/jardin-de-ninos.jpeg" class="gallery-img" title="Jardín de niños"><img src="img/bg-img/preescolarImg.jpg" alt=""></a>
+                                <a href="img/bg-img/logo1.jpeg" class="gallery-img" title="Logo"><img src="img/bg-img/logo1.jpeg" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -484,19 +391,15 @@
                     <div class="col-12 col-sm-6 col-lg-3">
                         <div class="footer-widget mb-100">
                             <div class="widget-title">
-                                <h6>Contact</h6>
+                                <h6>Contacto</h6>
                             </div>
                             <div class="single-contact d-flex mb-30">
-                                <i class="icon-placeholder"></i>
-                                <p>4127/ 5B-C Mislane Road, Gibraltar, UK</p>
+                                <i class="fab fa-google icono-blanco"></i>
+                                <p>agenciamunicipaltlaltinago@gmail.com</p>
                             </div>
                             <div class="single-contact d-flex mb-30">
-                                <i class="icon-telephone-1"></i>
-                                <p>Main: 203-808-8613 <br>Office: 203-808-8648</p>
-                            </div>
-                            <div class="single-contact d-flex">
-                                <i class="icon-contract"></i>
-                                <p>office@yourbusiness.com</p>
+                                <i class="fas fa-mobile icono-blanco"></i>
+                                <p>Celular: (+52) 951 171 2033</p>
                             </div>
                         </div>
                     </div>
@@ -508,7 +411,7 @@
                 <div class="row">
                     <div class="col-12">
                         <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados a la Agencia de Santo Domingo Tlaltinango
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                     </div>
                 </div>

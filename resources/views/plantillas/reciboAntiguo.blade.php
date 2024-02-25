@@ -42,11 +42,12 @@ height: 2cm;
 
 <header>
     <!-- <img src="{{public_path().'/img/logo3.png'}}" width="100%" height="100%"/> -->
-    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/logo3.png')) }}" width="100%" height="100%"/>
+    <img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/cabecera.png')) }}" width="100%" height="100%"/>
 </header>
 
 <footer>
 <!-- <img src="footer.png" width="100%" height="100%"/> -->
+<img src="data:image/png;base64,{{ base64_encode(file_get_contents(public_path().'/img/pie.png')) }}" width="100%" height="80%"/>
 </footer>
 
 <!-- Envuelva el contenido de su PDF dentro de una etiqueta principal -->

@@ -1,6 +1,6 @@
 @extends('layouts.auth_app')
 @section('title')
-    Admin Login
+    Iniciar sesión
 @endsection
 @section('content')
     <div class="card card-primary">

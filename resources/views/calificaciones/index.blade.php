@@ -152,11 +152,17 @@
 
 
 <!-- JQUERY -->
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-<!-- DATATABLES -->
-<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
-<!-- BOOTSTRAP -->
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+<!-- JQUERY -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> -->
+    <script src ="{{ asset('dataTable/jquery-3.4.1.js') }}"> </script>
+
+    <!-- DATATABLES -->
+    <!-- <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script> -->
+    <script src="{{ asset('dataTable/jquery.dataTables.min.js') }}"></script>
+
+    <!-- BOOTSTRAP -->
+    <!-- <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
+    <script src="{{ asset('dataTable/dataTables.bootstrap4.min.js') }}"></script>
 
 <script>
     new DataTable('#miTabla2', {
@@ -173,7 +179,7 @@
             { Acciones: 'Acciones' }
         ],
         language: {
-            url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json',
+            url: '/dataTable/es-ES.json',
         }
     });
 </script>

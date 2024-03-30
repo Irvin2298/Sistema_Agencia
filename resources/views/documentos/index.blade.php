@@ -30,7 +30,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="sexo">Selecciona el documento a generar: </label>
-                                        <select required name="documento" style="height: 40px;" class="form-control selectpicker" data-live-search="true" id="documentos">
+                                        <select required name="documento" style="height: 40px;" class="selectpicker" data-live-search="true" id="documentos">
                                             <option disabled selected value="">Documentos</option>
                                             <option value="Recibo">Recibo</option>
                                             <option value="Nombramiento">Nombramiento</option>
@@ -219,11 +219,6 @@
 @endsection
 
 @section('scripts')
-<script>
-    $(document).ready(function () {
-        $('.selectpicker').selectpicker();
-    });
-</script>
 
 <script>
     $(document).ready(function () {

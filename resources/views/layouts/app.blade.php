@@ -18,10 +18,13 @@
     <!-- Nuevo -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
 
-	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+      <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}">
 
       <!-- Script de sweet alert 2 -->
-      <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script> -->
+      <link href="{{ asset('js/sweetAlert2/package/dist/sweetalert2.min.css') }}" rel="stylesheet" type="text/css"/>
+        <script src="{{ asset('js/sweetAlert2/package/dist/sweetalert2.min.js') }}"></script>
 
     <!-- FullCalendar css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/fullcalendar.min.css') }}">

@@ -25,7 +25,7 @@
             margin: 0,
             loop: true,
             nav: true,
-            navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
             dots: true,
             autoplay: true,
             autoplayTimeout: 5000,
@@ -63,7 +63,7 @@
             margin: 0,
             loop: true,
             nav: true,
-            navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right"></i>'],
+            navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
             dots: true,
             autoplay: true,
             autoplayTimeout: 5000,
@@ -85,7 +85,7 @@
     if ($.fn.scrollUp) {
         browserWindow.scrollUp({
             scrollSpeed: 1500,
-            scrollText: '<i class="fas fa-angle-up"></i>'
+            scrollText: '<i class="fa fa-angle-up"></i>'
         });
     }
 

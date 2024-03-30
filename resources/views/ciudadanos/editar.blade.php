@@ -127,9 +127,9 @@
                                         @endphp
                                         <label for="observaciones">Observaciones: </label><span class="required text-danger">*</span>
                                         @if ($text == " ")
-                                        <textarea name="observaciones" id="observaciones" title="Ingresa las observaciones" placeholder="Observaciones" required  class="form-control"></textarea>
+                                        <textarea name="observaciones" id="observaciones" title="Ingresa las observaciones" placeholder="Observaciones"  class="form-control"></textarea>
                                         @else
-                                        <textarea name="observaciones" id="observaciones" title="Ingresa las observaciones"  required  class="form-control">{{$ciudadano->observaciones}}</textarea>
+                                        <textarea name="observaciones" id="observaciones" title="Ingresa las observaciones"  class="form-control">{{$ciudadano->observaciones}}</textarea>
                                         @endif
                                     </div>
                                 </div>
